@@ -5,8 +5,8 @@
 {
 	NSWindow *window;
     IBOutlet ofxCocoaGLView* ofApp;
+    
 }
-
 
 @property (assign) IBOutlet NSWindow *window;
 

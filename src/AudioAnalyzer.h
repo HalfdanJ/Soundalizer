@@ -15,9 +15,14 @@ public:
     
     vector<ofxBiquadFilter1f> filters;
     vector<float>  filtederValues;
+    vector<float>  dbValues, values;
     
-    int sampleRate;
-
+    int sampleRate, bufferSize;
+    
+    ofEvent<void> onNewAudio;
+    
+    int freqToIndex(int freq);
+    int indexToFreq(int index);
 
 private:
     void normalize(vector<float>& data);

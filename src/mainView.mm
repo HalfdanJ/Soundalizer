@@ -7,12 +7,14 @@
 {
     analyzer.setup();
     
+    agent.setup(&analyzer);
+    
 }
 
 - (void)update
 {
    // analyzer.update();
-
+//    agent.freqMin =
 }
 
 - (void)draw
@@ -25,6 +27,10 @@
     
     ofEnableAlphaBlending();
 
+    
+    ofSetColor(255,255,255,100);
+    //cout<<agent.value()<<endl;
+    ofRect(0,ofGetHeight(),ofGetWidth(),-agent.value()*100000 );
     
     int sampleRate = analyzer.sampleRate;
     int bufferSize = analyzer.getBins().size();
@@ -68,7 +74,7 @@
         ofSetColor(255, 100, 0);
         float max = 0;
         for(int i=0;i<bufferSize;i++){
-            float frequency = 0.5 * sampleRate * (float)i/bufferSize;
+            float frequency = analyzer.indexToFreq(i);
             float x = log10(frequency) ;
             float db = 20*log10(analyzer.filtederValues[i]);
             
@@ -92,6 +98,10 @@
     for(int i=0;i<ofGetWidth();i++){
         ofLine(i, ofGetHeight(), i, ofGetHeight()-analyzer.filtederValues[i*s]*100000);
     }*/
+}
+
+- (int) freqAtX:(int)x{
+    
 }
 
 - (void)exit

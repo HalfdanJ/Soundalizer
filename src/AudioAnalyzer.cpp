@@ -7,13 +7,16 @@
 //
 
 #include "AudioAnalyzer.h"
-void AudioAnalyzer::setup(int bufferSize, fftWindowType windowType, fftImplementation implementation, int audioBufferSize, int audioSampleRate) {
-    ofxEasyFft::setup(bufferSize, windowType, implementation, audioBufferSize, audioSampleRate);
+void AudioAnalyzer::setup(int _bufferSize, fftWindowType windowType, fftImplementation implementation, int audioBufferSize, int audioSampleRate) {
+    ofxEasyFft::setup(_bufferSize, windowType, implementation, audioBufferSize, audioSampleRate);
     
     sampleRate = audioSampleRate;
+    bufferSize = audioBufferSize;
     
-    filters.resize(bufferSize);
-    filtederValues.resize(bufferSize);
+    filters.resize(_bufferSize);
+    filtederValues.resize(_bufferSize);
+    dbValues.resize(_bufferSize);
+    values.resize(_bufferSize);
     
     for(int i=0;i<bufferSize;i++){
         filters[i].setFc(0.2);
@@ -25,6 +28,7 @@ void AudioAnalyzer::setup(int bufferSize, fftWindowType windowType, fftImplement
 
 
 void AudioAnalyzer::audioReceived(float* input, int bufferSize, int nChannels) {
+   // cout<<"A"<<endl;
     ofxEasyFft::audioReceived(input, bufferSize, nChannels);
     
     update();
@@ -32,10 +36,15 @@ void AudioAnalyzer::audioReceived(float* input, int bufferSize, int nChannels) {
     for(int i=0;i<bufferSize;i++){
         if(!isnan(getBins()[i])){
             filtederValues[i] = filters[i].update(getBins()[i]);
+            dbValues[i] = 20*log10(getBins()[i]);
+            values[i] = getBins()[i];
+
         }
     }
     
-    
+
+    ofNotifyEvent(onNewAudio);
+  //          cout<<"B"<<endl;
 }
 
 
@@ -49,4 +58,12 @@ void AudioAnalyzer::normalize(vector<float>& data) {
     for(int i = 0; i < data.size(); i++) {
         data[i] /= maxValue;
     }
+}
+
+
+int AudioAnalyzer::freqToIndex(int freq){
+    return 1 + 2. * bufferSize * freq / (float)sampleRate;
+}
+int AudioAnalyzer::indexToFreq(int index){
+    return 0.5 * sampleRate * (float)index/bufferSize;
 }

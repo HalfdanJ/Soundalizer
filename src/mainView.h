@@ -3,11 +3,13 @@
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
 #include "AudioAnalyzer.h"
+#include "AudioAgent.h"
 
 @interface mainView : ofxCocoaGLView {
     int r, g, b;
     AudioAnalyzer analyzer;
-
+    
+    AudioAgent agent;
 }
 
 - (void)setup;
@@ -24,5 +26,7 @@
 - (void)windowResized:(NSSize)size;
 
 - (void)changeColor:(id)sender;
+
+- (int) freqAtX:(int)x;
 
 @end
