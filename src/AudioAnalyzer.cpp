@@ -10,11 +10,13 @@
 void AudioAnalyzer::setup(int bufferSize, fftWindowType windowType, fftImplementation implementation, int audioBufferSize, int audioSampleRate) {
     ofxEasyFft::setup(bufferSize, windowType, implementation, audioBufferSize, audioSampleRate);
     
+    sampleRate = audioSampleRate;
+    
     filters.resize(bufferSize);
     filtederValues.resize(bufferSize);
     
     for(int i=0;i<bufferSize;i++){
-        filters[i].setFc(0.05);
+        filters[i].setFc(0.2);
     }
     
     
@@ -29,7 +31,6 @@ void AudioAnalyzer::audioReceived(float* input, int bufferSize, int nChannels) {
 
     for(int i=0;i<bufferSize;i++){
         if(!isnan(getBins()[i])){
-
             filtederValues[i] = filters[i].update(getBins()[i]);
         }
     }
