@@ -119,7 +119,10 @@
                     <slider verticalHuggingPriority="750" id="s4k-Jr-XGx">
                         <rect key="frame" x="18" y="390" width="96" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" state="on" alignment="left" maxValue="20000" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="aAq-DT-fKH"/>
+                        <sliderCell key="cell" state="on" alignment="left" minValue="0.001" maxValue="0.5" doubleValue="0.5" tickMarkPosition="above" sliderType="linear" id="aAq-DT-fKH"/>
+                        <connections>
+                            <action selector="setFc:" target="536" id="djO-wh-Vus"/>
+                        </connections>
                     </slider>
                 </subviews>
             </view>

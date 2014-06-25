@@ -9,12 +9,16 @@
     
     agent.setup(&analyzer);
     
+    minFreq = 10;
+    maxFreq = analyzer.sampleRate*0.5;
+    
 }
 
 - (void)update
 {
    // analyzer.update();
 //    agent.freqMin =
+    
 }
 
 - (void)draw
@@ -28,14 +32,10 @@
     ofEnableAlphaBlending();
 
     
-    ofSetColor(255,255,255,100);
-    //cout<<agent.value()<<endl;
-    ofRect(0,ofGetHeight(),ofGetWidth(),-agent.value()*100000 );
-    
     int sampleRate = analyzer.sampleRate;
     int bufferSize = analyzer.getBins().size();
     
-    float viewMinFreq = 10, viewMaxFreq = 25000;;//sampleRate*0.5;
+    float viewMinFreq = minFreq, viewMaxFreq = maxFreq;
     float viewMaxDb = 0;
     float viewMinDb = -100;
     
@@ -43,9 +43,7 @@
         ofScale(ofGetWidth(),ofGetHeight());
 
         //Scale x
-        ofScale(1.0/log10(viewMaxFreq),1);
-        
-        float diff = log10(viewMaxFreq) / (log10(viewMaxFreq) - log10(viewMinFreq));
+        float diff = 1. / (log10(viewMaxFreq) - log10(viewMinFreq)) ;
         ofScale(diff,1);
         ofTranslate(-log10(viewMinFreq), 0);
         
@@ -71,6 +69,8 @@
         
         ofLine(log10(10000),viewMinDb,log10(10000),viewMaxDb);
         
+        
+        //Waves
         ofSetColor(255, 100, 0);
         float max = 0;
         for(int i=0;i<bufferSize;i++){
@@ -84,6 +84,18 @@
             ofLine(x, -100, x, db);
 
         }
+        
+        
+        //Agent
+        ofSetColor(255,255,255,200);
+        ofNoFill();
+        ofRect(log10(agent.freqMin),0,log10(agent.freqMax)-log10(agent.freqMin), -100 );
+
+        ofSetColor(255,255,255,100);
+        ofFill();
+        ofRect(log10(agent.freqMin),20*log10(agent.value()),log10(agent.freqMax)-log10(agent.freqMin), -100 );
+
+        
 
     } ofPopMatrix();
 /*    float s = analyzer.getBins().size()/(float)ofGetWidth();
@@ -101,7 +113,15 @@
 }
 
 - (int) freqAtX:(int)x{
-    
+    float n = x / (float)ofGetWidth();
+    n = n  * (log10(maxFreq) - log10(minFreq));
+    n += log10(minFreq);
+    float freq = pow(10,n);
+    return freq;
+}
+
+- (void)setFc:(NSNumber*)fc{
+    agent.filter.setFc([fc floatValue]);
 }
 
 - (void)exit
@@ -130,17 +150,21 @@
 
 - (void)mouseDragged:(NSPoint)p button:(int)button
 {
-	
+    agent.freqMax = [self freqAtX:p.x];
+
 }
 
 - (void)mousePressed:(NSPoint)p button:(int)button
 {
-	
+    agent.freqMin = [self freqAtX:p.x];
+
+    cout<<"min "<<agent.freqMin<<endl;
 }
 
 - (void)mouseReleased:(NSPoint)p button:(int)button
 {
-	
+    agent.freqMax = [self freqAtX:p.x];
+    cout<<"max "<<agent.freqMax<<endl;
 }
 
 - (void)windowResized:(NSSize)size

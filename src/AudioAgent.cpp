@@ -13,7 +13,6 @@ void AudioAgent::setup(AudioAnalyzer * _analyzer){
     ofAddListener(analyzer->onNewAudio,this, &AudioAgent::onNewAudio);
 
     filter.setFc(0.1);
-    filter.setType(OFX_BIQUAD_TYPE_BANDPASS);
     
     freqMin = 1000;
     freqMax = 10000;
@@ -37,7 +36,7 @@ void AudioAgent::onNewAudio(){
     filter.update(v);
     soundMutex.unlock();
     
-    cout<<v<<"  "<<filter.value()<<"  "<<analyzer->values[500]<<endl;
+    //cout<<v<<"  "<<filter.value()<<"  "<<analyzer->values[500]<<endl;
       //      cout<<"D"<<endl;
 }
 

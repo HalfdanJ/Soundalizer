@@ -11,6 +11,8 @@ public:
     
     int freqMin, freqMax;
     
+    ofxBiquadFilter1f filter;
+
 protected:
     
     void onNewAudio();
@@ -18,5 +20,4 @@ protected:
     AudioAnalyzer * analyzer;
     ofMutex soundMutex;
 
-    ofxBiquadFilter1f filter;
 };

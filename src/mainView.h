@@ -10,7 +10,11 @@
     AudioAnalyzer analyzer;
     
     AudioAgent agent;
+    
+    float minFreq, maxFreq;
 }
+
+- (IBAction)setFc:(NSNumber*)fc;
 
 - (void)setup;
 - (void)update;
