@@ -12,8 +12,8 @@ void AudioAgentProcessor::setup(AudioAnalyzer * _analyzer){
     analyzer = _analyzer;
     ofAddListener(analyzer->onNewAudio,this, &AudioAgentProcessor::onNewAudio);
 
-    filter.setFc(0.1);
-    
+    setFc(0.1*analyzer->sampleRate);
+
     freqMin = 1000;
     freqMax = 10000;
 }
@@ -21,16 +21,22 @@ void AudioAgentProcessor::setup(AudioAnalyzer * _analyzer){
 void AudioAgentProcessor::onNewAudio(){
     int bufferSize = analyzer->bufferSize;
     
-    int viewMin = analyzer->freqToIndex(freqMin), viewMax = analyzer->freqToIndex(freqMax);
+    int viewMin = analyzer->freqToIndex(freqMin);
+    int viewMax = analyzer->freqToIndex(freqMax);
     
     double v = 0;
-    float min;
     for(int i=viewMin; i<viewMax;i++){
         if(!isnan(analyzer->values[i])){
             v += analyzer->values[i];
         }
     }
     v = v / (float)(viewMax-viewMin);
+    v = analyzer->toDb(v);
+    
+    v = MAX(-100,v);
+    v = MIN(0,v);
+    
+    v = ofMap(v, -100, 0, 0, 1);
     soundMutex.lock();
     filter.update(v);
     soundMutex.unlock();

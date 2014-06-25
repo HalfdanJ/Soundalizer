@@ -23,6 +23,8 @@ public:
     
     int freqToIndex(int freq);
     int indexToFreq(int index);
+    
+    float toDb(float val);
 
 private:
     void normalize(vector<float>& data);

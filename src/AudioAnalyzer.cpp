@@ -36,7 +36,7 @@ void AudioAnalyzer::audioReceived(float* input, int bufferSize, int nChannels) {
     for(int i=0;i<bufferSize;i++){
         if(!isnan(getBins()[i])){
             filtederValues[i] = filters[i].update(getBins()[i]);
-            dbValues[i] = 20*log10(getBins()[i]);
+            dbValues[i] = toDb( getBins()[i]);
             values[i] = getBins()[i];
 
         }
@@ -66,4 +66,8 @@ int AudioAnalyzer::freqToIndex(int freq){
 }
 int AudioAnalyzer::indexToFreq(int index){
     return 0.5 * sampleRate * (float)index/bufferSize;
+}
+
+float AudioAnalyzer::toDb(float val){
+    return 20*log10(val);
 }

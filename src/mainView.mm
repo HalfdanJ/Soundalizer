@@ -9,6 +9,8 @@
     cout<<"init"<<endl;
     self.agents = [NSMutableArray array];
     
+    analyzer.setup();
+
     AudioAgent * newAgent = [[AudioAgent alloc] initWithAnalyzer:&analyzer];
     newAgent.name = @"Agent 1";
     [self.agents addObject:newAgent];
@@ -32,7 +34,6 @@
 
 - (void)setup
 {
-    analyzer.setup();
     
    // agent.setup(&analyzer);
     
@@ -112,36 +113,31 @@
                 max = analyzer.filtederValues[i];
             
             ofLine(x, -100, x, db);
-
-        }
-        
-        
-        //Agent
-        for(int i=0;i<[agents count]; i++){
-            AudioAgent * agent = [agents objectAtIndex:i];
-            ofSetColor(255,255,255,200);
-            ofNoFill();
-            ofRect(log10(agent.processor->freqMin),0,log10(agent.processor->freqMax)-log10(agent.processor->freqMin), -100 );
             
-            ofSetColor(255,255,255,100);
-            ofFill();
-            ofRect(log10(agent.processor->freqMin),20*log10(agent.processor->value()),log10(agent.processor->freqMax)-log10(agent.processor->freqMin), -100 );
         }
         
+        ofPushMatrix();{
+            ofScale(1, -100);
 
+            //Agent
+            for(int i=0;i<[agents count]; i++){
+                AudioAgent * agent = [agents objectAtIndex:i];
+                ofSetColor(255,255,255,200);
+                ofNoFill();
+                ofRect(log10(agent.processor->freqMin),0,log10(agent.processor->freqMax)-log10(agent.processor->freqMin), -100 );
+                
+                ofSetColor(255,255,255,100);
+                ofFill();
+                ofRect(log10(agent.processor->freqMin),
+                       1,
+                       log10(agent.processor->freqMax)-log10(agent.processor->freqMin),
+                       -1*agent.processor->value() );
+            }
+            
+        } ofPopMatrix();
+        
+        
     } ofPopMatrix();
-/*    float s = analyzer.getBins().size()/(float)ofGetWidth();
-    
-    ofSetColor(255,255,255,150);
-    for(int i=0;i<ofGetWidth();i++){
-        ofLine(i, ofGetHeight(), i, ofGetHeight()-analyzer.getBins()[i*s]*100000);
-    }
-    
-    ofSetColor(255,255,255,150);
-
-    for(int i=0;i<ofGetWidth();i++){
-        ofLine(i, ofGetHeight(), i, ofGetHeight()-analyzer.filtederValues[i*s]*100000);
-    }*/
 }
 
 - (int) freqAtX:(int)x{
