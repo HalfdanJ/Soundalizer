@@ -24,7 +24,8 @@
 		609133841652CA6600B523AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6091337C1652C9C900B523AD /* MainMenu.xib */; };
 		609133871652CB3E00B523AD /* mainView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 609133861652CB3E00B523AD /* mainView.mm */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		BF2FDAD11959E4FA00CCCD76 /* AudioAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2FDACF1959E4FA00CCCD76 /* AudioAgent.cpp */; };
+		BF2FDAD11959E4FA00CCCD76 /* AudioAgentProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF2FDACF1959E4FA00CCCD76 /* AudioAgentProcessor.mm */; };
+		BFE796E9195AF5670047FB98 /* AudioAgent.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFE796E8195AF5670047FB98 /* AudioAgent.mm */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -111,8 +112,10 @@
 		609133851652CB3E00B523AD /* mainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainView.h; sourceTree = "<group>"; };
 		609133861652CB3E00B523AD /* mainView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mainView.mm; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
-		BF2FDACF1959E4FA00CCCD76 /* AudioAgent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioAgent.cpp; sourceTree = "<group>"; };
-		BF2FDAD01959E4FA00CCCD76 /* AudioAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAgent.h; sourceTree = "<group>"; };
+		BF2FDACF1959E4FA00CCCD76 /* AudioAgentProcessor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioAgentProcessor.mm; sourceTree = "<group>"; };
+		BF2FDAD01959E4FA00CCCD76 /* AudioAgentProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAgentProcessor.h; sourceTree = "<group>"; };
+		BFE796E7195AF5670047FB98 /* AudioAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAgent.h; sourceTree = "<group>"; };
+		BFE796E8195AF5670047FB98 /* AudioAgent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioAgent.mm; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -367,8 +370,10 @@
 				6091337C1652C9C900B523AD /* MainMenu.xib */,
 				04CAFAF61958E025008CBA4C /* AudioAnalyzer.cpp */,
 				04CAFAF71958E025008CBA4C /* AudioAnalyzer.h */,
-				BF2FDACF1959E4FA00CCCD76 /* AudioAgent.cpp */,
-				BF2FDAD01959E4FA00CCCD76 /* AudioAgent.h */,
+				BF2FDACF1959E4FA00CCCD76 /* AudioAgentProcessor.mm */,
+				BF2FDAD01959E4FA00CCCD76 /* AudioAgentProcessor.h */,
+				BFE796E7195AF5670047FB98 /* AudioAgent.h */,
+				BFE796E8195AF5670047FB98 /* AudioAgent.mm */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -486,8 +491,9 @@
 				04CAFAE41958B8D5008CBA4C /* ofxFftBasic.cpp in Sources */,
 				04CAFAE21958B8D5008CBA4C /* ofxEasyFft.cpp in Sources */,
 				04CAFAE61958B8D5008CBA4C /* ofxProcessFFT.cpp in Sources */,
-				BF2FDAD11959E4FA00CCCD76 /* AudioAgent.cpp in Sources */,
+				BF2FDAD11959E4FA00CCCD76 /* AudioAgentProcessor.mm in Sources */,
 				04CAFAE81958B8D5008CBA4C /* kiss_fftr.c in Sources */,
+				BFE796E9195AF5670047FB98 /* AudioAgent.mm in Sources */,
 				6091337D1652C9C900B523AD /* AppDelegate.m in Sources */,
 				04CAFAF51958DD9B008CBA4C /* ofxBiquadFilterInstance.cpp in Sources */,
 				04CAFAC71958B776008CBA4C /* ofxCocoaGLView.mm in Sources */,
@@ -650,7 +656,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "example-buttonDebug";
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 				USER_HEADER_SEARCH_PATHS = ../../../addons/ofxFft/libs/fftw/include/;
 				WRAPPER_EXTENSION = app;
 			};
@@ -739,7 +745,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "example-button";
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 				USER_HEADER_SEARCH_PATHS = ../../../addons/ofxFft/libs/fftw/include/;
 				WRAPPER_EXTENSION = app;
 			};

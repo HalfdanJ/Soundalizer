@@ -19,7 +19,7 @@ void AudioAnalyzer::setup(int _bufferSize, fftWindowType windowType, fftImplemen
     values.resize(_bufferSize);
     
     for(int i=0;i<bufferSize;i++){
-        filters[i].setFc(0.2);
+        filters[i].setFc(0.22);
     }
     
     

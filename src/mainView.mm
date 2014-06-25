@@ -2,12 +2,39 @@
 #include <stdlib.h>
 
 @implementation mainView
+@synthesize agents, agentsArrayController;
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    cout<<"init"<<endl;
+    self.agents = [NSMutableArray array];
+    
+    AudioAgent * newAgent = [[AudioAgent alloc] initWithAnalyzer:&analyzer];
+    newAgent.name = @"Agent 1";
+    [self.agents addObject:newAgent];
+
+    newAgent = [[AudioAgent alloc] initWithAnalyzer:&analyzer];
+    newAgent.name = @"Agent 2";
+    [self.agents addObject:newAgent];
+    
+
+    return self;
+    
+}
+-(id)init{
+    self = [super init];
+    return self;
+}
+
+- (void)awakeFromNib {
+
+}
 
 - (void)setup
 {
     analyzer.setup();
     
-    agent.setup(&analyzer);
+   // agent.setup(&analyzer);
     
     minFreq = 10;
     maxFreq = analyzer.sampleRate*0.5;
@@ -18,6 +45,8 @@
 {
    // analyzer.update();
 //    agent.freqMin =
+    //cout<<self.selectedAgentIndex<<endl;
+ //   NSLog(@"%@",[[agentsArrayController selectedObjects] objectAtIndex:0]);
     
 }
 
@@ -62,13 +91,14 @@
         }
         
         ofLine(log10(100),viewMinDb,log10(100),viewMaxDb);
-        ofDrawBitmapString("100", log10(100), -10);
+        ofDrawBitmapString("100", log10(100)*1.005, -5);
         
         ofLine(log10(1000),viewMinDb,log10(1000),viewMaxDb);
-        ofDrawBitmapString("1K", log10(1000), -10);
+        ofDrawBitmapString("1K", log10(1000)*1.005, -5);
         
         ofLine(log10(10000),viewMinDb,log10(10000),viewMaxDb);
-        
+        ofDrawBitmapString("10K", log10(10000)*1.005, -5);
+
         
         //Waves
         ofSetColor(255, 100, 0);
@@ -87,14 +117,16 @@
         
         
         //Agent
-        ofSetColor(255,255,255,200);
-        ofNoFill();
-        ofRect(log10(agent.freqMin),0,log10(agent.freqMax)-log10(agent.freqMin), -100 );
-
-        ofSetColor(255,255,255,100);
-        ofFill();
-        ofRect(log10(agent.freqMin),20*log10(agent.value()),log10(agent.freqMax)-log10(agent.freqMin), -100 );
-
+        for(int i=0;i<[agents count]; i++){
+            AudioAgent * agent = [agents objectAtIndex:i];
+            ofSetColor(255,255,255,200);
+            ofNoFill();
+            ofRect(log10(agent.processor->freqMin),0,log10(agent.processor->freqMax)-log10(agent.processor->freqMin), -100 );
+            
+            ofSetColor(255,255,255,100);
+            ofFill();
+            ofRect(log10(agent.processor->freqMin),20*log10(agent.processor->value()),log10(agent.processor->freqMax)-log10(agent.processor->freqMin), -100 );
+        }
         
 
     } ofPopMatrix();
@@ -121,7 +153,11 @@
 }
 
 - (void)setFc:(NSNumber*)fc{
-    agent.filter.setFc([fc floatValue]);
+   // agent.filter.setFc([fc floatValue]);
+}
+
+-(AudioAgent *)selectedAgent{
+    return [[agentsArrayController selectedObjects] objectAtIndex:0];
 }
 
 - (void)exit
@@ -150,21 +186,24 @@
 
 - (void)mouseDragged:(NSPoint)p button:(int)button
 {
-    agent.freqMax = [self freqAtX:p.x];
+    [[self selectedAgent] setInputFreqMax:[self freqAtX:p.x]];
+  //  agent.freqMax = [self freqAtX:p.x];
 
 }
 
 - (void)mousePressed:(NSPoint)p button:(int)button
 {
-    agent.freqMin = [self freqAtX:p.x];
+    [[self selectedAgent] setInputFreqMin:[self freqAtX:p.x]];
+   // agent.freqMin = [self freqAtX:p.x];
 
-    cout<<"min "<<agent.freqMin<<endl;
+   // cout<<"min "<<agent.freqMin<<endl;
 }
 
 - (void)mouseReleased:(NSPoint)p button:(int)button
 {
-    agent.freqMax = [self freqAtX:p.x];
-    cout<<"max "<<agent.freqMax<<endl;
+        [[self selectedAgent] setInputFreqMax:[self freqAtX:p.x]];
+   // agent.freqMax = [self freqAtX:p.x];
+    //cout<<"max "<<agent.freqMax<<endl;
 }
 
 - (void)windowResized:(NSSize)size

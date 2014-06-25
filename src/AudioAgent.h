@@ -1,23 +1,23 @@
 #pragma once
-
+#include "ofMain.h"
+#include "AudioAgentProcessor.h"
 #include "AudioAnalyzer.h"
 
-class AudioAgent {
-public:
-    
-    void setup(AudioAnalyzer * analyzer);
-    
-    float value();
-    
-    int freqMin, freqMax;
-    
-    ofxBiquadFilter1f filter;
+@interface AudioAgent : NSObject{
+    AudioAgentProcessor * processor;
+    NSString * name;
 
-protected:
     
-    void onNewAudio();
-    
-    AudioAnalyzer * analyzer;
-    ofMutex soundMutex;
+}
 
-};
+@property (retain) NSString * name;
+@property (assign) AudioAgentProcessor * processor;
+
+@property float inputFreqMin;
+@property float inputFreqMax;
+
+@property float inputFilterFc;
+
+-(id) initWithAnalyzer:(AudioAnalyzer*)analyzer;
+
+@end

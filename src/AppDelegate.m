@@ -1,8 +1,22 @@
+
+
 #import "AppDelegate.h"
+//#import "AudioAgent.h"
 
 @implementation AppDelegate
 
-@synthesize window;
+@synthesize window, mainView;
+
+-(id)init{
+    self =  [super init];
+    
+    return self;
+}
+
+-(void)awakeFromNib{
+    
+}
+
 
 - (void)dealloc
 {
@@ -12,7 +26,7 @@
 
 -(void)changeColor:(id)sender
 {
-    [ofApp changeColor:self];
+    [mainView changeColor:self];
 }
 
 

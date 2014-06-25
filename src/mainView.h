@@ -9,10 +9,18 @@
     int r, g, b;
     AudioAnalyzer analyzer;
     
-    AudioAgent agent;
+   // AudioAgent agent;
     
     float minFreq, maxFreq;
+    
+    NSMutableArray * agents;
+    NSArrayController * agentsArrayController;
+
 }
+
+@property (retain) IBOutlet NSMutableArray * agents;
+@property (assign) IBOutlet NSArrayController * agentsArrayController;
+
 
 - (IBAction)setFc:(NSNumber*)fc;
 
@@ -32,5 +40,6 @@
 - (void)changeColor:(id)sender;
 
 - (int) freqAtX:(int)x;
+- (AudioAgent*) selectedAgent;
 
 @end

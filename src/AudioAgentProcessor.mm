@@ -6,11 +6,11 @@
 //
 //
 
-#include "AudioAgent.h"
+#include "AudioAgentProcessor.h"
 
-void AudioAgent::setup(AudioAnalyzer * _analyzer){
+void AudioAgentProcessor::setup(AudioAnalyzer * _analyzer){
     analyzer = _analyzer;
-    ofAddListener(analyzer->onNewAudio,this, &AudioAgent::onNewAudio);
+    ofAddListener(analyzer->onNewAudio,this, &AudioAgentProcessor::onNewAudio);
 
     filter.setFc(0.1);
     
@@ -18,8 +18,7 @@ void AudioAgent::setup(AudioAnalyzer * _analyzer){
     freqMax = 10000;
 }
 
-void AudioAgent::onNewAudio(){
-      //      cout<<"C"<<endl;
+void AudioAgentProcessor::onNewAudio(){
     int bufferSize = analyzer->bufferSize;
     
     int viewMin = analyzer->freqToIndex(freqMin), viewMax = analyzer->freqToIndex(freqMax);
@@ -35,15 +34,23 @@ void AudioAgent::onNewAudio(){
     soundMutex.lock();
     filter.update(v);
     soundMutex.unlock();
-    
-    //cout<<v<<"  "<<filter.value()<<"  "<<analyzer->values[500]<<endl;
-      //      cout<<"D"<<endl;
 }
 
-float AudioAgent::value(){
+float AudioAgentProcessor::value(){
     soundMutex.lock();
     float v = filter.value();
     soundMutex.unlock();
     
     return v;
+}
+
+
+int AudioAgentProcessor::getFc(){
+    return fc;
+}
+
+void AudioAgentProcessor::setFc(int _fc){
+    filter.setFc(_fc/(float)analyzer->sampleRate);
+    fc = _fc;
+    return fc;
 }
