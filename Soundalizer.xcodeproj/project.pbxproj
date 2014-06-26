@@ -656,7 +656,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "example-buttonDebug";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx10.8;
 				USER_HEADER_SEARCH_PATHS = ../../../addons/ofxFft/libs/fftw/include/;
 				WRAPPER_EXTENSION = app;
 			};
@@ -745,7 +745,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "example-button";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx10.8;
 				USER_HEADER_SEARCH_PATHS = ../../../addons/ofxFft/libs/fftw/include/;
 				WRAPPER_EXTENSION = app;
 			};

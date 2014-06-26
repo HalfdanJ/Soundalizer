@@ -16,6 +16,9 @@ void AudioAgentProcessor::setup(AudioAnalyzer * _analyzer){
 
     freqMin = 1000;
     freqMax = 10000;
+    
+    minDb = -100;
+    maxDb = 0;
 }
 
 void AudioAgentProcessor::onNewAudio(){
@@ -36,7 +39,7 @@ void AudioAgentProcessor::onNewAudio(){
     v = MAX(-100,v);
     v = MIN(0,v);
     
-    v = ofMap(v, -100, 0, 0, 1);
+    v = ofMap(v, minDb, maxDb, 0, 1);
     soundMutex.lock();
     filter.update(v);
     soundMutex.unlock();

@@ -22,18 +22,34 @@
 }
 
 
--(float)inputFreqMin{
+-(int)inputFreqMin{
     return processor->freqMin;
 }
--(void)setInputFreqMin:(float)inputFreqMin{
+-(void)setInputFreqMin:(int)inputFreqMin{
     processor->freqMin = inputFreqMin;
 }
 
--(float)inputFreqMax{
+-(int)inputFreqMax{
     return processor->freqMax;
 }
--(void)setInputFreqMax:(float)inputFreqMax{
+-(void)setInputFreqMax:(int)inputFreqMax{
     processor->freqMax = inputFreqMax;
+}
+
+-(void)setInputMinDb:(float)inputMinDb{
+    processor->minDb = inputMinDb;
+}
+
+-(float)inputMinDb{
+    return processor->minDb;
+}
+
+-(void)setInputMaxDb:(float)inputMaxDb{
+    processor->maxDb = inputMaxDb;
+}
+
+-(float)inputMaxDb{
+    return processor->maxDb;
 }
 
 

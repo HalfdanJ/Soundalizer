@@ -13,8 +13,11 @@
 @property (retain) NSString * name;
 @property (assign) AudioAgentProcessor * processor;
 
-@property float inputFreqMin;
-@property float inputFreqMax;
+@property int inputFreqMin;
+@property int inputFreqMax;
+
+@property float inputMinDb;
+@property float inputMaxDb;
 
 @property float inputFilterFc;
 

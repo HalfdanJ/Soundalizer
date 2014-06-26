@@ -13,6 +13,7 @@ public:
     void setFc(int fc);
     
     int freqMin, freqMax;
+    float minDb, maxDb;
     
     ofxBiquadFilter1f filter;
     AudioAnalyzer * analyzer;
