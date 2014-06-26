@@ -40,6 +40,10 @@ void AudioAgentProcessor::onNewAudio(){
     v = MIN(0,v);
     
     v = ofMap(v, minDb, maxDb, 0, 1);
+    
+    v = MAX(0,v);
+    v = MIN(1,v);
+    
     soundMutex.lock();
     filter.update(v);
     soundMutex.unlock();

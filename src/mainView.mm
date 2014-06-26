@@ -121,17 +121,42 @@
 
             //Agent
             for(int i=0;i<[agents count]; i++){
-                AudioAgent * agent = [agents objectAtIndex:i];
-                ofSetColor(255,255,255,200);
-                ofNoFill();
-                ofRect(log10(agent.processor->freqMin),0,log10(agent.processor->freqMax)-log10(agent.processor->freqMin), -100 );
-                
-                ofSetColor(255,255,255,100);
-                ofFill();
-                ofRect(log10(agent.processor->freqMin),
-                       1,
-                       log10(agent.processor->freqMax)-log10(agent.processor->freqMin),
-                       -1*agent.processor->value() );
+                ofPushMatrix();{
+                    AudioAgent * agent = [agents objectAtIndex:i];
+                    ofTranslate(log10(agent.processor->freqMin), -1-agent.inputMinDb/100.0 + 1);
+                    ofScale(log10(agent.processor->freqMax)-log10(agent.processor->freqMin),-((agent.inputMaxDb-agent.inputMinDb)/100.));
+                    
+                    
+                    ofSetColor(255,200);
+                    ofNoFill();
+                    ofRect(0, 0, 1, 1 );
+                    
+                    ofFill();
+                    ofSetColor(255,20);
+                    ofRect(0, 0, 1, 1 );
+                    
+                    ofSetColor(255,255,255,100);
+                    ofFill();
+                    ofRect(0,0,
+                           1,
+                           agent.processor->value() );
+/*                    ofFill();
+                    ofSetColor(255,20);
+                    ofRect(log10(agent.processor->freqMin),
+                           -agent.inputMinDb/100.0,
+                           log10(agent.processor->freqMax)-log10(agent.processor->freqMin),
+                           -(agent.inputMaxDb-agent.inputMinDb)/100. );
+                    
+                    
+                    cout<< (agent.inputMaxDb-agent.inputMinDb)/100.<<endl;
+                    
+                    ofSetColor(255,255,255,100);
+                    ofFill();
+                    ofRect(log10(agent.processor->freqMin),
+                           1,
+                           log10(agent.processor->freqMax)-log10(agent.processor->freqMin),
+                           -1*agent.processor->value() );*/
+                }ofPopMatrix();
             }
             
         } ofPopMatrix();
@@ -146,6 +171,21 @@
     n += log10(minFreq);
     float freq = pow(10,n);
     return freq;
+}
+
+-(float)dbAtY:(int)y{
+    
+    float v = y / (float)ofGetHeight();
+    v *= -100;
+
+    return v;
+    /*
+    ofScale(1, 1.0/fabs(viewMaxDb - viewMinDb));
+    ofTranslate(0, -viewMinDb);
+    
+    ofTranslate(0,-100);
+    ofScale(1, -1);*/
+
 }
 
 - (void)setFc:(NSNumber*)fc{
@@ -177,12 +217,13 @@
 
 - (void)mouseMoved:(NSPoint)p
 {
-	
+    [self dbAtY:p.y];
 }
 
 - (void)mouseDragged:(NSPoint)p button:(int)button
 {
     [[self selectedAgent] setInputFreqMax:[self freqAtX:p.x]];
+    [[self selectedAgent] setInputMinDb:[self dbAtY:p.y]];
   //  agent.freqMax = [self freqAtX:p.x];
 
 }
@@ -190,6 +231,7 @@
 - (void)mousePressed:(NSPoint)p button:(int)button
 {
     [[self selectedAgent] setInputFreqMin:[self freqAtX:p.x]];
+    [[self selectedAgent] setInputMaxDb:[self dbAtY:p.y]];
    // agent.freqMin = [self freqAtX:p.x];
 
    // cout<<"min "<<agent.freqMin<<endl;
@@ -198,6 +240,7 @@
 - (void)mouseReleased:(NSPoint)p button:(int)button
 {
         [[self selectedAgent] setInputFreqMax:[self freqAtX:p.x]];
+        [[self selectedAgent] setInputMinDb:[self dbAtY:p.y]];
    // agent.freqMax = [self freqAtX:p.x];
     //cout<<"max "<<agent.freqMax<<endl;
 }

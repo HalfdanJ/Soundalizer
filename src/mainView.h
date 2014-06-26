@@ -40,6 +40,7 @@
 - (void)changeColor:(id)sender;
 
 - (int) freqAtX:(int)x;
+- (float) dbAtY:(int)y;
 - (AudioAgent*) selectedAgent;
 
 @end
