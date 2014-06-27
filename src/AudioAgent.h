@@ -3,11 +3,12 @@
 #include "AudioAgentProcessor.h"
 #include "AudioAnalyzer.h"
 
-@interface AudioAgent : NSObject{
+@interface AudioAgent : NSObject <NSCoding>{
     AudioAgentProcessor * processor;
     NSString * name;
-
     
+    float _outputValue;
+
 }
 
 @property (retain) NSString * name;
@@ -21,6 +22,10 @@
 
 @property float inputFilterFc;
 
+@property (readonly) float outputValue;
+@property BOOL outputSpeed;
+
+-(void) setAnalyzer:(AudioAnalyzer*)analyzer;
 -(id) initWithAnalyzer:(AudioAnalyzer*)analyzer;
 
 @end

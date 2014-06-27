@@ -33,7 +33,7 @@ void AudioAnalyzer::audioReceived(float* input, int bufferSize, int nChannels) {
     
     update();
 
-    for(int i=0;i<bufferSize;i++){
+    for(int i=0;i<getBins().size();i++){
         if(!isnan(getBins()[i])){
             filtederValues[i] = filters[i].update(getBins()[i]);
             dbValues[i] = toDb( getBins()[i]);

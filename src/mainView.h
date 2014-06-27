@@ -21,8 +21,8 @@
 @property (retain) IBOutlet NSMutableArray * agents;
 @property (assign) IBOutlet NSArrayController * agentsArrayController;
 
-
-- (IBAction)setFc:(NSNumber*)fc;
+- (void) addAgent;
+- (void) loadAgents: (NSArray*)agents;
 
 - (void)setup;
 - (void)update;
@@ -42,5 +42,6 @@
 - (int) freqAtX:(int)x;
 - (float) dbAtY:(int)y;
 - (AudioAgent*) selectedAgent;
+
 
 @end

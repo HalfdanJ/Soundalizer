@@ -2,34 +2,46 @@
 #include <stdlib.h>
 
 @implementation mainView
-@synthesize agents, agentsArrayController;
+@synthesize  agentsArrayController, agents;
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
-    cout<<"init"<<endl;
+    //
     self.agents = [NSMutableArray array];
     
     analyzer.setup();
 
-    AudioAgent * newAgent = [[AudioAgent alloc] initWithAnalyzer:&analyzer];
-    newAgent.name = @"Agent 1";
-    [self.agents addObject:newAgent];
-
-    newAgent = [[AudioAgent alloc] initWithAnalyzer:&analyzer];
-    newAgent.name = @"Agent 2";
-    [self.agents addObject:newAgent];
     
-
     return self;
-    
 }
+
+
+-(void)addAgent{
+    AudioAgent * newAgent = [[AudioAgent alloc] initWithAnalyzer:&analyzer];
+    newAgent.name = [NSString stringWithFormat:@"Agent %i", self.agents.count+1];;
+    [self.agentsArrayController addObject:newAgent];
+}
+
+-(AudioAgent *)selectedAgent{
+    return [[agentsArrayController selectedObjects] objectAtIndex:0];
+}
+
+
+- (void) loadAgents: (NSArray*)_agents{
+    for(AudioAgent* agent in _agents){
+        [agent setAnalyzer:&analyzer];
+        [self.agentsArrayController addObject:agent];
+    }
+}
+
 -(id)init{
     self = [super init];
     return self;
 }
 
 - (void)awakeFromNib {
-
+    //[self addAgent];
+    //[self addAgent];
 }
 
 - (void)setup
@@ -186,14 +198,6 @@
     ofTranslate(0,-100);
     ofScale(1, -1);*/
 
-}
-
-- (void)setFc:(NSNumber*)fc{
-   // agent.filter.setFc([fc floatValue]);
-}
-
--(AudioAgent *)selectedAgent{
-    return [[agentsArrayController selectedObjects] objectAtIndex:0];
 }
 
 - (void)exit

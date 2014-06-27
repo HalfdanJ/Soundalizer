@@ -8,17 +8,24 @@
 
 #include "AudioAgentProcessor.h"
 
-void AudioAgentProcessor::setup(AudioAnalyzer * _analyzer){
-    analyzer = _analyzer;
-    ofAddListener(analyzer->onNewAudio,this, &AudioAgentProcessor::onNewAudio);
-
-    setFc(0.1*analyzer->sampleRate);
-
+AudioAgentProcessor::AudioAgentProcessor(){
+    fc = 5000;
+    analyzer = nil;
+    
+    
     freqMin = 1000;
     freqMax = 10000;
     
     minDb = -100;
     maxDb = 0;
+
+}
+
+void AudioAgentProcessor::setup(AudioAnalyzer * _analyzer){
+    analyzer = _analyzer;
+    ofAddListener(analyzer->onNewAudio,this, &AudioAgentProcessor::onNewAudio);
+
+    setFc(fc);
 }
 
 void AudioAgentProcessor::onNewAudio(){
@@ -45,6 +52,7 @@ void AudioAgentProcessor::onNewAudio(){
     v = MIN(1,v);
     
     soundMutex.lock();
+    lastValue = filter.value();
     filter.update(v);
     soundMutex.unlock();
 }
@@ -52,7 +60,17 @@ void AudioAgentProcessor::onNewAudio(){
 float AudioAgentProcessor::value(){
     soundMutex.lock();
     float v = filter.value();
+    
     soundMutex.unlock();
+
+    return v;
+}
+
+float AudioAgentProcessor::speedValue(){
+    float v = value();
+    
+    v = v - lastValue;
+    v *= 10.;
     
     return v;
 }
@@ -63,7 +81,8 @@ int AudioAgentProcessor::getFc(){
 }
 
 void AudioAgentProcessor::setFc(int _fc){
-    filter.setFc(_fc/(float)analyzer->sampleRate);
     fc = _fc;
-    return fc;
+
+    if(analyzer)
+        filter.setFc(_fc/(float)analyzer->sampleRate);
 }

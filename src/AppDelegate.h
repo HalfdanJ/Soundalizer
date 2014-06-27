@@ -10,8 +10,9 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet ofxCocoaGLView* mainView;
 
-
--(IBAction)changeColor:(id)sender;
+- (NSString *) pathForDataFile;
+- (void) saveDataToDisk;
+- (void) loadDataFromDisk;
 
 
 @end    

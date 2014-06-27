@@ -9,16 +9,31 @@
 #import "AudioAgent.h"
 
 @implementation AudioAgent
-@synthesize name, processor;
+@synthesize name;
+@synthesize processor;
+@synthesize outputValue = _outputValue;
 
--(id)initWithAnalyzer:(AudioAnalyzer *)analyzer{
+
+-(id)init{
     self = [super init];
     if(self){
-        processor = new AudioAgentProcessor();
-        processor->setup(analyzer);
-        
+        self.processor = new AudioAgentProcessor();
+
+        [NSTimer scheduledTimerWithTimeInterval:1.0/15. target:self selector:@selector(updateValue) userInfo:nil repeats:true];
     }
     return self;
+}
+
+-(id)initWithAnalyzer:(AudioAnalyzer *)analyzer{
+    self = [self init];
+    if(self){
+        [self setAnalyzer:analyzer];
+    }
+    return self;
+}
+
+-(void)setAnalyzer:(AudioAnalyzer *)analyzer{
+    self.processor->setup(analyzer);
 }
 
 
@@ -58,6 +73,49 @@
 }
 -(void)setInputFilterFc:(float)inputFilterFc{
     processor->setFc(inputFilterFc);
+}
+
+-(void)setOutputSpeed:(BOOL)outputSpeed{
+    processor->outputSpeed = outputSpeed;
+}
+-(BOOL)outputSpeed{
+    return processor->outputSpeed;
+}
+
+-(void) updateValue {
+    [self willChangeValueForKey:@"outputValue"];
+    _outputValue = processor->value();
+    [self didChangeValueForKey:@"outputValue"];
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.name forKey:@"name"];
+
+    [aCoder encodeInteger:self.inputFreqMin forKey:@"inputFreqMin"];
+    [aCoder encodeInteger:self.inputFreqMax forKey:@"inputFreqMax"];
+    
+    [aCoder encodeFloat:self.inputMaxDb forKey:@"inputMaxDb"];
+    [aCoder encodeFloat:self.inputMinDb forKey:@"inputMinDb"];
+    
+    [aCoder encodeFloat:self.inputFilterFc forKey:@"inputFilterFc"];
+    
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [self init];
+    if(self){
+        self.name = [aDecoder decodeObjectForKey:@"name"];
+
+        self.inputFreqMin = [aDecoder decodeIntegerForKey:@"inputFreqMin"];
+        self.inputFreqMax = [aDecoder decodeIntegerForKey:@"inputFreqMax"];
+        
+        self.inputMinDb = [aDecoder decodeFloatForKey:@"inputMinDb"];
+        self.inputMaxDb = [aDecoder decodeFloatForKey:@"inputMaxDb"];
+        
+        self.inputFilterFc = [aDecoder decodeFloatForKey:@"inputFilterFc"];
+        
+    }
+    return self;
 }
 
 @end
