@@ -19,7 +19,7 @@ void AudioAnalyzer::setup(int _bufferSize, fftWindowType windowType, fftImplemen
     values.resize(_bufferSize);
     
     for(int i=0;i<bufferSize;i++){
-        filters[i].setFc(0.22);
+        filters[i].setFc(0.20);
     }
     
     
@@ -29,7 +29,12 @@ void AudioAnalyzer::setup(int _bufferSize, fftWindowType windowType, fftImplemen
 
 void AudioAnalyzer::audioReceived(float* input, int bufferSize, int nChannels) {
    // cout<<"A"<<endl;
+    clock_t start = clock() ;
+
+    
     ofxEasyFft::audioReceived(input, bufferSize, nChannels);
+    
+    
     
     update();
 
@@ -44,6 +49,10 @@ void AudioAnalyzer::audioReceived(float* input, int bufferSize, int nChannels) {
     
 
     ofNotifyEvent(onNewAudio);
+
+    clock_t end = clock() ;
+    double elapsed_time = (end-start)/(double)CLOCKS_PER_SEC ;
+   // cout<<elapsed_time*sampleRate<<endl;
   //          cout<<"B"<<endl;
 }
 

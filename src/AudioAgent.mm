@@ -37,17 +37,17 @@
 }
 
 
--(int)inputFreqMin{
+-(float)inputFreqMin{
     return processor->freqMin;
 }
--(void)setInputFreqMin:(int)inputFreqMin{
-    processor->freqMin = inputFreqMin;
+-(void)setInputFreqMin:(float)inputFreqMin{
+    processor->freqMin = MIN(self.inputFreqMax, MAX(10,inputFreqMin));
 }
 
--(int)inputFreqMax{
+-(float)inputFreqMax{
     return processor->freqMax;
 }
--(void)setInputFreqMax:(int)inputFreqMax{
+-(void)setInputFreqMax:(float)inputFreqMax{
     processor->freqMax = inputFreqMax;
 }
 

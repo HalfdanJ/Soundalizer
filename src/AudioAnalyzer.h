@@ -5,10 +5,10 @@
 class AudioAnalyzer : public ofxEasyFft {
 public:
     
-    void setup(int bufferSize = 2048,
+    void setup(int bufferSize = 2048/2,
                fftWindowType windowType = OF_FFT_WINDOW_HAMMING,
                fftImplementation implementation = OF_FFT_FFTW,
-               int audioBufferSize = 2048,
+               int audioBufferSize = 2048/2,
                int audioSampleRate = 44100);
     
     void audioReceived(float* input, int bufferSize, int nChannels);

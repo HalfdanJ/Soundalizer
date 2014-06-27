@@ -15,7 +15,7 @@ public:
     int getFc();
     void setFc(int fc);
     
-    int freqMin, freqMax;
+    float freqMin, freqMax;
     float minDb, maxDb;
     
     bool outputSpeed;

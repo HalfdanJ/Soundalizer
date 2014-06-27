@@ -5,8 +5,15 @@
 #include "AudioAnalyzer.h"
 #include "AudioAgent.h"
 
+typedef enum : NSUInteger {
+    None = 0x00,
+    Top = 0x01,
+    Left = 0x02 ,
+    Right = 0x04,
+    Bottom = 0x08,
+} SelectionHook;
+
 @interface mainView : ofxCocoaGLView {
-    int r, g, b;
     AudioAnalyzer analyzer;
     
    // AudioAgent agent;
@@ -15,6 +22,10 @@
     
     NSMutableArray * agents;
     NSArrayController * agentsArrayController;
+    
+    int selectedHook;
+    
+    NSPoint lastMousePoint;
 
 }
 
@@ -39,8 +50,12 @@
 
 - (void)changeColor:(id)sender;
 
-- (int) freqAtX:(int)x;
-- (float) dbAtY:(int)y;
+- (float) freqAtX:(float)x;
+- (float) dbAtY:(float)y;
+
+- (float) xAtFreq:(float)freq;
+- (float) yAtDb:(float)db;
+
 - (AudioAgent*) selectedAgent;
 
 

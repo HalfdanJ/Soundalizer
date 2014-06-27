@@ -71,6 +71,8 @@
     NSDictionary *bindingInfo = [self infoForBinding:NSValueBinding];
     [[bindingInfo valueForKey:NSObservedObjectKey] setValue:[NSNumber numberWithFloat:self.floatValue]
                                                  forKeyPath:[bindingInfo valueForKey:NSObservedKeyPathKey]];
+    
+    [[self window] makeFirstResponder:nil];
 
    /* CGPoint p = CGPointMake(mouseLoc.x, mouseLoc.y);
     CGWarpMouseCursorPosition(p);
@@ -80,6 +82,7 @@
 -(void)mouseDown:(NSEvent *)theEvent{
     [self setSelectable:true];
     [self setEditable:true];
+
 
     CGEventRef ourEvent = CGEventCreate(NULL);
     mouseLoc = CGEventGetLocation(ourEvent);

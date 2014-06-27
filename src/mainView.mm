@@ -23,6 +23,9 @@
 }
 
 -(AudioAgent *)selectedAgent{
+    if([agentsArrayController selectedObjects].count == 0){
+        return nil;
+    }
     return [[agentsArrayController selectedObjects] objectAtIndex:0];
 }
 
@@ -112,6 +115,19 @@
         ofLine(log10(10000),viewMinDb,log10(10000),viewMaxDb);
         ofDrawBitmapString("10K", log10(10000)*1.005, -5);
 
+        ofSetColor(255,10);
+        for(int i=10;i<100;i+=10){
+            ofLine(log10(i),viewMinDb,log10(i),viewMaxDb);
+        }
+        for(int i=100;i<1000;i+=100){
+            ofLine(log10(i),viewMinDb,log10(i),viewMaxDb);
+        }
+        for(int i=1000;i<10000;i+=1000){
+            ofLine(log10(i),viewMinDb,log10(i),viewMaxDb);
+        }
+        for(int i=10000;i<30000;i+=10000){
+            ofLine(log10(i),viewMinDb,log10(i),viewMaxDb);
+        }
         
         //Waves
         ofSetColor(255, 100, 0);
@@ -133,41 +149,35 @@
 
             //Agent
             for(int i=0;i<[agents count]; i++){
+                AudioAgent * agent = [agents objectAtIndex:i];
+                bool selected = false;
+                if([self selectedAgent] == agent){
+                    selected = true;
+                }
                 ofPushMatrix();{
-                    AudioAgent * agent = [agents objectAtIndex:i];
                     ofTranslate(log10(agent.processor->freqMin), -1-agent.inputMinDb/100.0 + 1);
                     ofScale(log10(agent.processor->freqMax)-log10(agent.processor->freqMin),-((agent.inputMaxDb-agent.inputMinDb)/100.));
                     
-                    
-                    ofSetColor(255,200);
+                    //Bounds
                     ofNoFill();
+                    ofSetColor(255,200);
+                    if(selected)
+                        ofSetColor(255,200,50,200);
+                    
                     ofRect(0, 0, 1, 1 );
                     
+                    //Background
                     ofFill();
                     ofSetColor(255,20);
+                    if(selected)
+                        ofSetColor(255,200,50,20);
                     ofRect(0, 0, 1, 1 );
                     
+                    //Value
                     ofSetColor(255,255,255,100);
                     ofFill();
-                    ofRect(0,0,
-                           1,
-                           agent.processor->value() );
-/*                    ofFill();
-                    ofSetColor(255,20);
-                    ofRect(log10(agent.processor->freqMin),
-                           -agent.inputMinDb/100.0,
-                           log10(agent.processor->freqMax)-log10(agent.processor->freqMin),
-                           -(agent.inputMaxDb-agent.inputMinDb)/100. );
-                    
-                    
-                    cout<< (agent.inputMaxDb-agent.inputMinDb)/100.<<endl;
-                    
-                    ofSetColor(255,255,255,100);
-                    ofFill();
-                    ofRect(log10(agent.processor->freqMin),
-                           1,
-                           log10(agent.processor->freqMax)-log10(agent.processor->freqMin),
-                           -1*agent.processor->value() );*/
+                    ofRect(0,0, 1, agent.processor->value() );
+
                 }ofPopMatrix();
             }
             
@@ -177,37 +187,90 @@
     } ofPopMatrix();
 }
 
-- (int) freqAtX:(int)x{
-    float n = x / (float)ofGetWidth();
-    n = n  * (log10(maxFreq) - log10(minFreq));
+- (AudioAgent*) agentUnderMouse{
+    for(AudioAgent* agent in self.agents){
+        int freq = [self freqAtX:ofGetMouseX()];
+        float db = [self dbAtY:ofGetMouseY()];
+        
+        if(agent.inputFreqMin <= freq && agent.inputFreqMax >= freq){
+            if(agent.inputMinDb <= db && agent.inputMaxDb >= db){
+                return agent;
+            }
+        }
+    }
+    return nil;
+}
+
+- (int) selectionHookUnderMouse {
+    AudioAgent * agent = [self agentUnderMouse];
+    if(!agent){
+        return None;
+    }
+
+    int ret = None;
+    
+    int freq = [self freqAtX:ofGetMouseX()];
+    float db = [self dbAtY:ofGetMouseY()];
+
+    if(fabs([self xAtFreq:agent.inputFreqMin] - ofGetMouseX()) < 10){
+        ret |= Left;
+    }
+    else if(fabs([self xAtFreq:agent.inputFreqMax] - ofGetMouseX()) < 10){
+        ret |= Right;
+    }
+    if(fabs([self yAtDb:agent.inputMinDb] - ofGetMouseY()) < 10){
+        ret |= Bottom;
+    }
+    else if(fabs([self yAtDb:agent.inputMaxDb] - ofGetMouseY()) < 10){
+        ret |= Top;
+    }
+    
+    return ret;
+
+    
+    //if(fabs(freq-agent.inputFreqMin)
+}
+
+- (float) freqAtX:(float)x{
+    double n = x;
+    n = n / (double)ofGetWidth();
+    n = n  * (double)(log10(maxFreq) - log10(minFreq));
     n += log10(minFreq);
-    float freq = pow(10,n);
-    return freq;
+    n = pow(10,n);
+    return n;
 }
 
--(float)dbAtY:(int)y{
+-(float)dbAtY:(float)y{
     
-    float v = y / (float)ofGetHeight();
+    double v = y / (double)ofGetHeight();
     v *= -100;
-
-    return v;
-    /*
-    ofScale(1, 1.0/fabs(viewMaxDb - viewMinDb));
-    ofTranslate(0, -viewMinDb);
     
-    ofTranslate(0,-100);
-    ofScale(1, -1);*/
-
+    return v;
 }
+- (float) xAtFreq:(float)freq{
+    double v = (double)freq;
+    v = log10(v);
+    v -=  log10(minFreq);
+    v = v / (double)(log10(maxFreq) - log10(minFreq));
+    v = v * (double)ofGetWidth();/**/
+    return v;
+    
+}
+- (float) yAtDb:(float)db{
+    float v = db;
+    v /= -100;
+    v *= ofGetHeight();
+    return v;
+}
+
+
+
 
 - (void)exit
 {
 	
 }
 
--(void)changeColor:(id)sender
-{
-}
 
 - (void)keyPressed:(int)key
 {
@@ -221,32 +284,98 @@
 
 - (void)mouseMoved:(NSPoint)p
 {
-    [self dbAtY:p.y];
+ //   cout<<p.x<<"  "<<[self xAtFreq:[self freqAtX:p.x]]<<endl;
+//    [self dbAtY:p.y];
+    int h = [self selectionHookUnderMouse];
+
+    if(h == Left || h == Right){
+        [[NSCursor resizeLeftRightCursor] set];
+    } else if(h == Top || h == Bottom){
+        [[NSCursor resizeUpDownCursor] set];
+    } else if(h != None){
+        [[NSCursor crosshairCursor] set];
+    }else if([self agentUnderMouse]){
+        [[NSCursor openHandCursor] set];
+    } else {
+        [[NSCursor arrowCursor] set];
+    }
+    
+
 }
 
 - (void)mouseDragged:(NSPoint)p button:(int)button
 {
-    [[self selectedAgent] setInputFreqMax:[self freqAtX:p.x]];
-    [[self selectedAgent] setInputMinDb:[self dbAtY:p.y]];
-  //  agent.freqMax = [self freqAtX:p.x];
+/*    [[self selectedAgent] setInputFreqMax:[self freqAtX:p.x]];
+    [[self selectedAgent] setInputMinDb:[self dbAtY:p.y]];*/
+    AudioAgent * agent = [self selectedAgent];
+    if(!agent){
+        return;
+    }
+    
+    if(selectedHook == None){
+        {
+            float x = [self xAtFreq:agent.inputFreqMin];
+            float diff = x - lastMousePoint.x;
+            agent.inputFreqMin = [self freqAtX:p.x+diff];
+        }
+        {
+            float x = [self xAtFreq:agent.inputFreqMax];
+            float diff = x - lastMousePoint.x;
+            agent.inputFreqMax = [self freqAtX:p.x+diff];
+        }
+        {
+            float y = [self yAtDb:agent.inputMaxDb];
+            float diff = y - lastMousePoint.y;
+            agent.inputMaxDb = [self dbAtY:p.y+diff];
+        }
+        {
+            float y = [self yAtDb:agent.inputMinDb];
+            float diff = y - lastMousePoint.y;
+            agent.inputMinDb = [self dbAtY:p.y+diff];
+        }
+        
+    
+    }
+    else {
+        if(selectedHook & Left){
+            agent.inputFreqMin = [self freqAtX:p.x];
+        }
+        if(selectedHook & Right){
+            agent.inputFreqMax = [self freqAtX:p.x];
+        }
+        if(selectedHook & Top){
+            agent.inputMaxDb = [self dbAtY:p.y];
+        }
+        if(selectedHook & Bottom){
+            agent.inputMinDb = [self dbAtY:p.y];
+        }
+
+    }
+    lastMousePoint = p;
 
 }
 
 - (void)mousePressed:(NSPoint)p button:(int)button
 {
-    [[self selectedAgent] setInputFreqMin:[self freqAtX:p.x]];
-    [[self selectedAgent] setInputMaxDb:[self dbAtY:p.y]];
-   // agent.freqMin = [self freqAtX:p.x];
+    [self.agentsArrayController setSelectedObjects:@[  ]];
 
-   // cout<<"min "<<agent.freqMin<<endl;
+    if([self agentUnderMouse]){
+        [self.agentsArrayController setSelectedObjects:@[ [self agentUnderMouse] ]];
+    }
+    
+    selectedHook = [self selectionHookUnderMouse];
+    lastMousePoint = p;
+    
+/*    [[self selectedAgent] setInputFreqMin:[self freqAtX:p.x]];
+    [[self selectedAgent] setInputMaxDb:[self dbAtY:p.y]];*/
 }
 
 - (void)mouseReleased:(NSPoint)p button:(int)button
 {
-        [[self selectedAgent] setInputFreqMax:[self freqAtX:p.x]];
-        [[self selectedAgent] setInputMinDb:[self dbAtY:p.y]];
-   // agent.freqMax = [self freqAtX:p.x];
-    //cout<<"max "<<agent.freqMax<<endl;
+     /*   [[self selectedAgent] setInputFreqMax:[self freqAtX:p.x]];
+        [[self selectedAgent] setInputMinDb:[self dbAtY:p.y]];*/
+    
+    
 }
 
 - (void)windowResized:(NSSize)size

@@ -173,7 +173,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* example-buttonDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "example-buttonDebug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* SoundalizerDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundalizerDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		E4C2424510CC5A17004149E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
@@ -500,7 +500,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* example-buttonDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* SoundalizerDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -554,7 +554,7 @@
 			);
 			name = "example-button";
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* example-buttonDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* SoundalizerDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -815,7 +815,7 @@
 					/Users/drexjojo/Development/of_v0.8.1_osx_release/addons/ofxFft/libs/fftw/lib/osx,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "example-buttonDebug";
+				PRODUCT_NAME = SoundalizerDebug;
 				SDKROOT = macosx10.8;
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxOsc/libs/oscpack/src/ ../../../addons/ofxFft/libs/fftw/include/";
 				WRAPPER_EXTENSION = app;
@@ -904,7 +904,7 @@
 					/Users/drexjojo/Development/of_v0.8.1_osx_release/addons/ofxFft/libs/fftw/lib/osx,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "example-button";
+				PRODUCT_NAME = Soundalizer;
 				SDKROOT = macosx10.8;
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxOsc/libs/oscpack/src/ ../../../addons/ofxFft/libs/fftw/include/";
 				WRAPPER_EXTENSION = app;
