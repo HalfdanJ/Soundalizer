@@ -11,7 +11,6 @@
 @implementation AudioAgent
 @synthesize name, oscAddress;
 @synthesize processor;
-@synthesize outputValue = _outputValue;
 
 
 -(id)init{
@@ -75,11 +74,12 @@
     processor->setFc(inputFilterFc);
 }
 
--(void)setOutputSpeed:(BOOL)outputSpeed{
-    processor->outputSpeed = outputSpeed;
+-(float)outputSpeed{
+    return processor->speedValue();
 }
--(BOOL)outputSpeed{
-    return processor->outputSpeed;
+-(float)outputValue{
+    return _outputValue;
+//    return processor->value();
 }
 
 -(void) updateValue {

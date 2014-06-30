@@ -23,7 +23,8 @@
         if(agent.oscAddress && agent.oscAddress.length > 0){
             ofxOscMessage msg;
             msg.setAddress([agent.oscAddress cStringUsingEncoding:NSUTF8StringEncoding]);
-            msg.addFloatArg(agent.outputValue);
+            msg.addFloatArg(agent.processor->value());
+            msg.addFloatArg(agent.processor->speedValue());
             osc.sendMessage(msg);
         }
     }

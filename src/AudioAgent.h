@@ -25,7 +25,7 @@
 @property float inputFilterFc;
 
 @property (readonly) float outputValue;
-@property BOOL outputSpeed;
+@property (readonly) float outputSpeed;
 
 -(void) setAnalyzer:(AudioAnalyzer*)analyzer;
 -(id) initWithAnalyzer:(AudioAnalyzer*)analyzer;

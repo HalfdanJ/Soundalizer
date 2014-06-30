@@ -17,9 +17,7 @@ public:
     
     float freqMin, freqMax;
     float minDb, maxDb;
-    
-    bool outputSpeed;
-    
+        
     ofxBiquadFilter1f filter;
     AudioAnalyzer * analyzer;
 
