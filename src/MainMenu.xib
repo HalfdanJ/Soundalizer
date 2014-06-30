@@ -104,8 +104,8 @@
                     <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fFl-rv-wR6">
                         <rect key="frame" x="0.0" y="0.0" width="1039" height="638"/>
                         <subviews>
-                            <customView id="aCu-a5-KSx">
-                                <rect key="frame" x="0.0" y="0.0" width="217" height="638"/>
+                            <customView misplaced="YES" id="aCu-a5-KSx">
+                                <rect key="frame" x="0.0" y="0.0" width="219" height="638"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RW1-EE-aKF">
@@ -267,14 +267,6 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oJ3-gB-aMs">
-                                                <rect key="frame" x="444" y="127" width="189" height="17"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Output" id="NaP-fu-lHc">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T2e-lY-v8c">
                                                 <rect key="frame" x="25" y="67" width="50" height="14"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="min (Hz)" id="jC5-86-GrK">
@@ -330,7 +322,7 @@
                                                 </connections>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="liT-qQ-ih1">
-                                                <rect key="frame" x="462" y="71" width="49" height="14"/>
+                                                <rect key="frame" x="479" y="71" width="49" height="14"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="min (dB)" id="vYm-FJ-etf">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -338,7 +330,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cSs-2c-ga7">
-                                                <rect key="frame" x="516" y="97" width="62" height="14"/>
+                                                <rect key="frame" x="533" y="97" width="62" height="14"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Mapping" id="Nbw-qC-kxu">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -346,7 +338,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ta-BE-JO5" customClass="SliderTextField">
-                                                <rect key="frame" x="518" y="67" width="96" height="22"/>
+                                                <rect key="frame" x="535" y="67" width="96" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Nv3-KG-L2s">
                                                     <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="IHF-hO-ih6">
                                                         <real key="minimum" value="-100"/>
@@ -361,7 +353,7 @@
                                                 </connections>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vid-r9-9s3">
-                                                <rect key="frame" x="460" y="45" width="51" height="14"/>
+                                                <rect key="frame" x="477" y="45" width="51" height="14"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="max (dB)" id="shU-X1-fJN">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -369,7 +361,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n7N-wK-Se7" customClass="SliderTextField">
-                                                <rect key="frame" x="518" y="41" width="96" height="22"/>
+                                                <rect key="frame" x="535" y="41" width="96" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="KnP-5P-ajK">
                                                     <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="a0e-nf-SQR">
                                                         <real key="minimum" value="-100"/>
@@ -427,7 +419,7 @@
                                                 </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BVF-8g-B9e">
-                                                <rect key="frame" x="703" y="69" width="96" height="22"/>
+                                                <rect key="frame" x="535" y="15" width="199" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="WJq-lE-q60">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -438,9 +430,17 @@
                                                 </connections>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQC-vA-ybF">
-                                                <rect key="frame" x="625" y="73" width="72" height="14"/>
+                                                <rect key="frame" x="457" y="19" width="72" height="14"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="OSC Address" id="x8p-yv-EMs">
                                                     <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oJ3-gB-aMs">
+                                                <rect key="frame" x="462" y="127" width="189" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Output" id="NaP-fu-lHc">
+                                                    <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -596,7 +596,7 @@
             </view>
             <point key="canvasLocation" x="888" y="483.5"/>
         </window>
-        <arrayController objectClassName="OutputDestination" automaticallyPreparesContent="YES" id="xBL-CM-AMO" userLabel="Destination Array Controller"/>
+        <arrayController objectClassName="OutputDestination" id="xBL-CM-AMO" userLabel="Destination Array Controller"/>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>

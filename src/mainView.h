@@ -38,6 +38,9 @@ typedef enum : NSUInteger {
 - (void) addAgent;
 - (void) loadAgents: (NSArray*)agents;
 
+- (NSArray*) outputs;
+- (void) loadOutputs: (NSArray*)outputs;
+
 - (void)setup;
 - (void)update;
 - (void)draw;

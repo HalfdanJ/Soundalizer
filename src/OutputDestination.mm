@@ -37,4 +37,24 @@
     }
 }
 
+-(void)dealloc{
+    [self removeObserver:self forKeyPath:@"hostname"];
+    [self removeObserver:self forKeyPath:@"port"];
+    [super dealloc];
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [self init];
+    if(self){
+        self.hostname = [aDecoder decodeObjectForKey:@"hostname"];
+        self.port = [aDecoder decodeIntegerForKey:@"port"];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.hostname forKey:@"hostname"];
+    [aCoder encodeInteger:self.port forKey:@"port"];
+}
+
 @end

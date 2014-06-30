@@ -22,6 +22,7 @@
 -(void)addAgent{
     AudioAgent * newAgent = [[AudioAgent alloc] initWithAnalyzer:&analyzer];
     newAgent.name = [NSString stringWithFormat:@"Agent %i", self.agents.count+1];;
+    newAgent.oscAddress = [NSString stringWithFormat:@"/soundalizer/output%i",self.agents.count+1];
     [self.agentsArrayController addObject:newAgent];
 }
 
@@ -38,6 +39,21 @@
         [agent setAnalyzer:&analyzer];
         [self.agentsArrayController addObject:agent];
     }
+}
+
+- (NSArray*) outputs{
+    return self.destinationsArrayController.content;
+}
+
+- (void) loadOutputs: (NSArray*)outputs{
+    NSRange range = NSMakeRange(0, [[self.destinationsArrayController arrangedObjects] count]);
+    [self.destinationsArrayController removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+    
+    for(OutputDestination * dest in outputs){
+        [self.destinationsArrayController addObject:dest];
+    }
+
+
 }
 
 -(id)init{

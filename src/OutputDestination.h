@@ -2,7 +2,7 @@
 #include "ofMain.h"
 #include "ofxOsc.h"
 
-@interface OutputDestination : NSObject  {
+@interface OutputDestination : NSObject <NSCoding>  {
     NSString * hostname;
     int port;
     
