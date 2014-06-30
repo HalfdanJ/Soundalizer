@@ -6,12 +6,14 @@
 @interface AudioAgent : NSObject <NSCoding>{
     AudioAgentProcessor * processor;
     NSString * name;
+    NSString * oscAddress;
     
     float _outputValue;
 
 }
 
 @property (retain) NSString * name;
+@property (retain) NSString * oscAddress;
 @property (assign) AudioAgentProcessor * processor;
 
 @property float inputFreqMin;

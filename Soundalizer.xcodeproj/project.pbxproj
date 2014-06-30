@@ -39,6 +39,7 @@
 		BFB00CAA195D66F200D02A40 /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB00C9C195D66F200D02A40 /* OscReceivedElements.cpp */; };
 		BFB00CAB195D66F200D02A40 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB00C9E195D66F200D02A40 /* OscTypes.cpp */; };
 		BFE796E9195AF5670047FB98 /* AudioAgent.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFE796E8195AF5670047FB98 /* AudioAgent.mm */; };
+		DDFBE3B61961351C00A336C7 /* OutputDestination.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDFBE3B51961351C00A336C7 /* OutputDestination.mm */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -163,6 +164,8 @@
 		BFB00C9F195D66F200D02A40 /* OscTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscTypes.h; sourceTree = "<group>"; };
 		BFE796E7195AF5670047FB98 /* AudioAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAgent.h; sourceTree = "<group>"; };
 		BFE796E8195AF5670047FB98 /* AudioAgent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioAgent.mm; sourceTree = "<group>"; };
+		DDFBE3B41961351C00A336C7 /* OutputDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputDestination.h; sourceTree = "<group>"; };
+		DDFBE3B51961351C00A336C7 /* OutputDestination.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OutputDestination.mm; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -521,6 +524,8 @@
 				BFE796E8195AF5670047FB98 /* AudioAgent.mm */,
 				BF8043CF195C71DF007B6870 /* SliderTextField.h */,
 				BF8043D0195C71DF007B6870 /* SliderTextField.m */,
+				DDFBE3B41961351C00A336C7 /* OutputDestination.h */,
+				DDFBE3B51961351C00A336C7 /* OutputDestination.mm */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -639,6 +644,7 @@
 				04CAFAF81958E025008CBA4C /* AudioAnalyzer.cpp in Sources */,
 				BFB00CA4195D66F200D02A40 /* ofxOscSender.cpp in Sources */,
 				04CAFAE41958B8D5008CBA4C /* ofxFftBasic.cpp in Sources */,
+				DDFBE3B61961351C00A336C7 /* OutputDestination.mm in Sources */,
 				04CAFAE21958B8D5008CBA4C /* ofxEasyFft.cpp in Sources */,
 				04CAFAE61958B8D5008CBA4C /* ofxProcessFFT.cpp in Sources */,
 				BF2FDAD11959E4FA00CCCD76 /* AudioAgentProcessor.mm in Sources */,
@@ -816,7 +822,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SoundalizerDebug;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxOsc/libs/oscpack/src/ ../../../addons/ofxFft/libs/fftw/include/";
 				WRAPPER_EXTENSION = app;
 			};
@@ -905,7 +911,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Soundalizer;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx10.9;
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxOsc/libs/oscpack/src/ ../../../addons/ofxFft/libs/fftw/include/";
 				WRAPPER_EXTENSION = app;
 			};

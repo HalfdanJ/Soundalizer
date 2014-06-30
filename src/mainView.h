@@ -4,6 +4,7 @@
 #include "ofxCocoaGLView.h"
 #include "AudioAnalyzer.h"
 #include "AudioAgent.h"
+#include "OutputDestination.h"
 
 typedef enum : NSUInteger {
     None = 0x00,
@@ -22,15 +23,17 @@ typedef enum : NSUInteger {
     
     NSMutableArray * agents;
     NSArrayController * agentsArrayController;
-    
+    NSArrayController * destinationsArrayController;
     int selectedHook;
     
     NSPoint lastMousePoint;
-
+    
+    NSTimer * outputTimer;
 }
 
 @property (retain) IBOutlet NSMutableArray * agents;
 @property (assign) IBOutlet NSArrayController * agentsArrayController;
+@property (assign) IBOutlet NSArrayController * destinationsArrayController;
 
 - (void) addAgent;
 - (void) loadAgents: (NSArray*)agents;

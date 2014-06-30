@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 @implementation mainView
-@synthesize  agentsArrayController, agents;
+@synthesize  agentsArrayController, agents, destinationsArrayController;
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
@@ -10,7 +10,10 @@
     self.agents = [NSMutableArray array];
     
     analyzer.setup();
-
+    
+    outputTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.
+                                                      target:self selector:@selector(updateOutputs)
+                                                    userInfo:nil repeats:YES];
     
     return self;
 }
@@ -56,6 +59,14 @@
     maxFreq = analyzer.sampleRate*0.5;
     
 }
+
+
+- (void) updateOutputs {
+    for(OutputDestination * dest in self.destinationsArrayController.content){
+        [dest update:self.agents];
+    }
+}
+
 
 - (void)update
 {

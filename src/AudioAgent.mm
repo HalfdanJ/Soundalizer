@@ -9,7 +9,7 @@
 #import "AudioAgent.h"
 
 @implementation AudioAgent
-@synthesize name;
+@synthesize name, oscAddress;
 @synthesize processor;
 @synthesize outputValue = _outputValue;
 
@@ -90,6 +90,7 @@
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.oscAddress forKey:@"oscAddress"];
 
     [aCoder encodeInteger:self.inputFreqMin forKey:@"inputFreqMin"];
     [aCoder encodeInteger:self.inputFreqMax forKey:@"inputFreqMax"];
@@ -105,6 +106,7 @@
     self = [self init];
     if(self){
         self.name = [aDecoder decodeObjectForKey:@"name"];
+        self.oscAddress = [aDecoder decodeObjectForKey:@"oscAddress"];
 
         self.inputFreqMin = [aDecoder decodeIntegerForKey:@"inputFreqMin"];
         self.inputFreqMax = [aDecoder decodeIntegerForKey:@"inputFreqMax"];
