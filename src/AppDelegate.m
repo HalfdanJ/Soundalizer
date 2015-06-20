@@ -48,6 +48,7 @@
     
     [rootObject setValue: [[self mainView] agents] forKey:@"agents"];
     [rootObject setValue: [[self mainView] outputs] forKey:@"outputs"];
+    [rootObject setValue: [[self mainView] addresses] forKey:@"addresses"];
     [NSKeyedArchiver archiveRootObject: rootObject toFile: path];
 }
 
@@ -65,5 +66,6 @@
     rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     [[self mainView] loadAgents: [rootObject valueForKey:@"agents"]];
     [[self mainView] loadOutputs:[rootObject valueForKey:@"outputs"]];
+    [[self mainView] loadAddresses:[rootObject valueForKey:@"addresses"]];
 }
 @end

@@ -22,6 +22,7 @@ typedef enum : NSUInteger {
     float minFreq, maxFreq;
     
     NSMutableArray * agents;
+    NSArrayController* addressesArrayController;
     NSArrayController * agentsArrayController;
     NSArrayController * destinationsArrayController;
     int selectedHook;
@@ -34,6 +35,7 @@ typedef enum : NSUInteger {
 @property (retain) IBOutlet NSMutableArray * agents;
 @property (assign) IBOutlet NSArrayController * agentsArrayController;
 @property (assign) IBOutlet NSArrayController * destinationsArrayController;
+@property (assign) IBOutlet NSArrayController * addressesArrayController;
 
 - (void) addAgent;
 - (void) loadAgents: (NSArray*)agents;

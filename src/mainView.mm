@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 @implementation mainView
-@synthesize  agentsArrayController, agents, destinationsArrayController;
+@synthesize  agentsArrayController, agents, destinationsArrayController, addressesArrayController;
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
@@ -45,6 +45,20 @@
     return self.destinationsArrayController.content;
 }
 
+
+
+- (void) loadAddresses: (NSArray*)_addresses{
+    NSRange range = NSMakeRange(0, [[self.addressesArrayController arrangedObjects] count]);
+    [self.addressesArrayController removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+    
+    for(NSDictionary * adr in _addresses){
+        [self.addressesArrayController addObject:adr];
+    }}
+
+- (NSArray*) addresses{
+    return self.addressesArrayController.content;
+}
+
 - (void) loadOutputs: (NSArray*)outputs{
     NSRange range = NSMakeRange(0, [[self.destinationsArrayController arrangedObjects] count]);
     [self.destinationsArrayController removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
@@ -52,8 +66,6 @@
     for(OutputDestination * dest in outputs){
         [self.destinationsArrayController addObject:dest];
     }
-
-
 }
 
 -(id)init{
@@ -127,7 +139,6 @@
         ofScale(1, -1);
         
         ofSetColor(255, 50);
-
         for(int db = 0; db >= -100; db -= 10){
             ofLine(0,db,log10(viewMaxFreq),db);
             ofDrawBitmapString(ofToString(db)+"db", ofPoint(log10(viewMinFreq*1.05), db+1));
@@ -156,8 +167,20 @@
             ofLine(log10(i),viewMinDb,log10(i),viewMaxDb);
         }
         
+       
+        //Max values
+        ofSetColor(ofColor().fromHex(0xFF8F00));
+        for(int i=0;i<bufferSize;i++){
+            float frequency = analyzer.indexToFreq(i);
+            float x = log10(frequency) ;
+            float db = 20*log10(analyzer.maxValues[i]);
+            
+            ofLine(x, -100, x, db);
+        }
+
+        
         //Waves
-        ofSetColor(255, 100, 0);
+        ofSetColor(ofColor().fromHex(0xFF3D00));
         float max = 0;
         for(int i=0;i<bufferSize;i++){
             float frequency = analyzer.indexToFreq(i);
@@ -170,6 +193,9 @@
             ofLine(x, -100, x, db);
             
         }
+        
+       
+
         
         ofPushMatrix();{
             ofScale(1, -100);

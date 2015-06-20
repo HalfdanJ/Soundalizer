@@ -3,19 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 44;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04CAFAC71958B776008CBA4C /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04CAFAC61958B776008CBA4C /* ofxCocoaGLView.mm */; };
-		04CAFAE21958B8D5008CBA4C /* ofxEasyFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04CAFACA1958B8D5008CBA4C /* ofxEasyFft.cpp */; };
-		04CAFAE31958B8D5008CBA4C /* ofxFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04CAFACC1958B8D5008CBA4C /* ofxFft.cpp */; };
-		04CAFAE41958B8D5008CBA4C /* ofxFftBasic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04CAFACE1958B8D5008CBA4C /* ofxFftBasic.cpp */; };
-		04CAFAE51958B8D5008CBA4C /* ofxFftw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04CAFAD01958B8D5008CBA4C /* ofxFftw.cpp */; };
-		04CAFAE61958B8D5008CBA4C /* ofxProcessFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04CAFAD21958B8D5008CBA4C /* ofxProcessFFT.cpp */; };
-		04CAFAE71958B8D5008CBA4C /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 04CAFADE1958B8D5008CBA4C /* kiss_fft.c */; };
-		04CAFAE81958B8D5008CBA4C /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 04CAFAE01958B8D5008CBA4C /* kiss_fftr.c */; };
-		04CAFAED1958D4D6008CBA4C /* fftw3f.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CAFAEC1958D4D6008CBA4C /* fftw3f.a */; };
 		04CAFAF41958DD9B008CBA4C /* ofxBiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04CAFAF01958DD9B008CBA4C /* ofxBiquadFilter.cpp */; };
 		04CAFAF51958DD9B008CBA4C /* ofxBiquadFilterInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04CAFAF21958DD9B008CBA4C /* ofxBiquadFilterInstance.cpp */; };
 		04CAFAF81958E025008CBA4C /* AudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04CAFAF61958E025008CBA4C /* AudioAnalyzer.cpp */; };
@@ -39,6 +30,15 @@
 		BFB00CAA195D66F200D02A40 /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB00C9C195D66F200D02A40 /* OscReceivedElements.cpp */; };
 		BFB00CAB195D66F200D02A40 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB00C9E195D66F200D02A40 /* OscTypes.cpp */; };
 		BFE796E9195AF5670047FB98 /* AudioAgent.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFE796E8195AF5670047FB98 /* AudioAgent.mm */; };
+		DD348A411B35DB5B0008FD52 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD348A401B35DB5B0008FD52 /* ofxCocoaGLView.mm */; };
+		DD348A7D1B35EEA90008FD52 /* ofxEasyFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD348A651B35EEA90008FD52 /* ofxEasyFft.cpp */; };
+		DD348A7E1B35EEA90008FD52 /* ofxFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD348A671B35EEA90008FD52 /* ofxFft.cpp */; };
+		DD348A7F1B35EEA90008FD52 /* ofxFftBasic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD348A691B35EEA90008FD52 /* ofxFftBasic.cpp */; };
+		DD348A801B35EEA90008FD52 /* ofxFftw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD348A6B1B35EEA90008FD52 /* ofxFftw.cpp */; };
+		DD348A811B35EEA90008FD52 /* ofxProcessFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD348A6D1B35EEA90008FD52 /* ofxProcessFFT.cpp */; };
+		DD348A821B35EEA90008FD52 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = DD348A791B35EEA90008FD52 /* kiss_fft.c */; };
+		DD348A831B35EEA90008FD52 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = DD348A7B1B35EEA90008FD52 /* kiss_fftr.c */; };
+		DD348A851B35F3B50008FD52 /* fftw3f.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD348A841B35F3B50008FD52 /* fftw3f.a */; };
 		DDFBE3B61961351C00A336C7 /* OutputDestination.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDFBE3B51961351C00A336C7 /* OutputDestination.mm */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -90,28 +90,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		04CAFAC51958B776008CBA4C /* ofxCocoaGLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
-		04CAFAC61958B776008CBA4C /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
-		04CAFACA1958B8D5008CBA4C /* ofxEasyFft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxEasyFft.cpp; sourceTree = "<group>"; };
-		04CAFACB1958B8D5008CBA4C /* ofxEasyFft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxEasyFft.h; sourceTree = "<group>"; };
-		04CAFACC1958B8D5008CBA4C /* ofxFft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFft.cpp; sourceTree = "<group>"; };
-		04CAFACD1958B8D5008CBA4C /* ofxFft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFft.h; sourceTree = "<group>"; };
-		04CAFACE1958B8D5008CBA4C /* ofxFftBasic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFftBasic.cpp; sourceTree = "<group>"; };
-		04CAFACF1958B8D5008CBA4C /* ofxFftBasic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFftBasic.h; sourceTree = "<group>"; };
-		04CAFAD01958B8D5008CBA4C /* ofxFftw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFftw.cpp; sourceTree = "<group>"; };
-		04CAFAD11958B8D5008CBA4C /* ofxFftw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFftw.h; sourceTree = "<group>"; };
-		04CAFAD21958B8D5008CBA4C /* ofxProcessFFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxProcessFFT.cpp; sourceTree = "<group>"; };
-		04CAFAD31958B8D5008CBA4C /* ofxProcessFFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxProcessFFT.h; sourceTree = "<group>"; };
-		04CAFAD61958B8D5008CBA4C /* .keep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .keep; sourceTree = "<group>"; };
-		04CAFAD81958B8D5008CBA4C /* fftw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fftw3.h; sourceTree = "<group>"; };
-		04CAFADA1958B8D5008CBA4C /* .keep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .keep; sourceTree = "<group>"; };
-		04CAFADC1958B8D5008CBA4C /* .keep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .keep; sourceTree = "<group>"; };
-		04CAFADD1958B8D5008CBA4C /* _kiss_fft_guts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
-		04CAFADE1958B8D5008CBA4C /* kiss_fft.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
-		04CAFADF1958B8D5008CBA4C /* kiss_fft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
-		04CAFAE01958B8D5008CBA4C /* kiss_fftr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kiss_fftr.c; sourceTree = "<group>"; };
-		04CAFAE11958B8D5008CBA4C /* kiss_fftr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kiss_fftr.h; sourceTree = "<group>"; };
-		04CAFAEC1958D4D6008CBA4C /* fftw3f.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = fftw3f.a; sourceTree = "<group>"; };
 		04CAFAF01958DD9B008CBA4C /* ofxBiquadFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBiquadFilter.cpp; sourceTree = "<group>"; };
 		04CAFAF11958DD9B008CBA4C /* ofxBiquadFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxBiquadFilter.h; sourceTree = "<group>"; };
 		04CAFAF21958DD9B008CBA4C /* ofxBiquadFilterInstance.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBiquadFilterInstance.cpp; sourceTree = "<group>"; };
@@ -164,6 +142,28 @@
 		BFB00C9F195D66F200D02A40 /* OscTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscTypes.h; sourceTree = "<group>"; };
 		BFE796E7195AF5670047FB98 /* AudioAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAgent.h; sourceTree = "<group>"; };
 		BFE796E8195AF5670047FB98 /* AudioAgent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioAgent.mm; sourceTree = "<group>"; };
+		DD348A3F1B35DB5B0008FD52 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
+		DD348A401B35DB5B0008FD52 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
+		DD348A651B35EEA90008FD52 /* ofxEasyFft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxEasyFft.cpp; sourceTree = "<group>"; };
+		DD348A661B35EEA90008FD52 /* ofxEasyFft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxEasyFft.h; sourceTree = "<group>"; };
+		DD348A671B35EEA90008FD52 /* ofxFft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFft.cpp; sourceTree = "<group>"; };
+		DD348A681B35EEA90008FD52 /* ofxFft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFft.h; sourceTree = "<group>"; };
+		DD348A691B35EEA90008FD52 /* ofxFftBasic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFftBasic.cpp; sourceTree = "<group>"; };
+		DD348A6A1B35EEA90008FD52 /* ofxFftBasic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFftBasic.h; sourceTree = "<group>"; };
+		DD348A6B1B35EEA90008FD52 /* ofxFftw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFftw.cpp; sourceTree = "<group>"; };
+		DD348A6C1B35EEA90008FD52 /* ofxFftw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFftw.h; sourceTree = "<group>"; };
+		DD348A6D1B35EEA90008FD52 /* ofxProcessFFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxProcessFFT.cpp; sourceTree = "<group>"; };
+		DD348A6E1B35EEA90008FD52 /* ofxProcessFFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxProcessFFT.h; sourceTree = "<group>"; };
+		DD348A711B35EEA90008FD52 /* .keep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .keep; sourceTree = "<group>"; };
+		DD348A731B35EEA90008FD52 /* fftw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fftw3.h; sourceTree = "<group>"; };
+		DD348A751B35EEA90008FD52 /* .keep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .keep; sourceTree = "<group>"; };
+		DD348A771B35EEA90008FD52 /* .keep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .keep; sourceTree = "<group>"; };
+		DD348A781B35EEA90008FD52 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
+		DD348A791B35EEA90008FD52 /* kiss_fft.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
+		DD348A7A1B35EEA90008FD52 /* kiss_fft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
+		DD348A7B1B35EEA90008FD52 /* kiss_fftr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kiss_fftr.c; sourceTree = "<group>"; };
+		DD348A7C1B35EEA90008FD52 /* kiss_fftr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kiss_fftr.h; sourceTree = "<group>"; };
+		DD348A841B35F3B50008FD52 /* fftw3f.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = fftw3f.a; sourceTree = "<group>"; };
 		DDFBE3B41961351C00A336C7 /* OutputDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputDestination.h; sourceTree = "<group>"; };
 		DDFBE3B51961351C00A336C7 /* OutputDestination.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OutputDestination.mm; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -205,7 +205,7 @@
 				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
 				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
 				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
-				04CAFAED1958D4D6008CBA4C /* fftw3f.a in Frameworks */,
+				DD348A851B35F3B50008FD52 /* fftw3f.a in Frameworks */,
 				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
 				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
@@ -216,109 +216,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04CAFAC31958B776008CBA4C /* ofxCocoaGLView */ = {
-			isa = PBXGroup;
-			children = (
-				04CAFAC41958B776008CBA4C /* src */,
-			);
-			name = ofxCocoaGLView;
-			sourceTree = "<group>";
-		};
-		04CAFAC41958B776008CBA4C /* src */ = {
-			isa = PBXGroup;
-			children = (
-				04CAFAC51958B776008CBA4C /* ofxCocoaGLView.h */,
-				04CAFAC61958B776008CBA4C /* ofxCocoaGLView.mm */,
-			);
-			name = src;
-			path = ../../../addons/ofxCocoaGLView/src;
-			sourceTree = "<group>";
-		};
-		04CAFAC81958B8D5008CBA4C /* ofxFft */ = {
-			isa = PBXGroup;
-			children = (
-				04CAFAC91958B8D5008CBA4C /* src */,
-				04CAFAD41958B8D5008CBA4C /* libs */,
-			);
-			name = ofxFft;
-			sourceTree = "<group>";
-		};
-		04CAFAC91958B8D5008CBA4C /* src */ = {
-			isa = PBXGroup;
-			children = (
-				04CAFACA1958B8D5008CBA4C /* ofxEasyFft.cpp */,
-				04CAFACB1958B8D5008CBA4C /* ofxEasyFft.h */,
-				04CAFACC1958B8D5008CBA4C /* ofxFft.cpp */,
-				04CAFACD1958B8D5008CBA4C /* ofxFft.h */,
-				04CAFACE1958B8D5008CBA4C /* ofxFftBasic.cpp */,
-				04CAFACF1958B8D5008CBA4C /* ofxFftBasic.h */,
-				04CAFAD01958B8D5008CBA4C /* ofxFftw.cpp */,
-				04CAFAD11958B8D5008CBA4C /* ofxFftw.h */,
-				04CAFAD21958B8D5008CBA4C /* ofxProcessFFT.cpp */,
-				04CAFAD31958B8D5008CBA4C /* ofxProcessFFT.h */,
-			);
-			name = src;
-			path = ../../../addons/ofxFft/src;
-			sourceTree = "<group>";
-		};
-		04CAFAD41958B8D5008CBA4C /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				04CAFAD51958B8D5008CBA4C /* fftw */,
-				04CAFADB1958B8D5008CBA4C /* kiss */,
-			);
-			name = libs;
-			path = ../../../addons/ofxFft/libs;
-			sourceTree = "<group>";
-		};
-		04CAFAD51958B8D5008CBA4C /* fftw */ = {
-			isa = PBXGroup;
-			children = (
-				04CAFAD61958B8D5008CBA4C /* .keep */,
-				04CAFAD71958B8D5008CBA4C /* include */,
-				04CAFAD91958B8D5008CBA4C /* lib */,
-			);
-			path = fftw;
-			sourceTree = "<group>";
-		};
-		04CAFAD71958B8D5008CBA4C /* include */ = {
-			isa = PBXGroup;
-			children = (
-				04CAFAD81958B8D5008CBA4C /* fftw3.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		04CAFAD91958B8D5008CBA4C /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				04CAFAEB1958D4D6008CBA4C /* osx */,
-				04CAFADA1958B8D5008CBA4C /* .keep */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		04CAFADB1958B8D5008CBA4C /* kiss */ = {
-			isa = PBXGroup;
-			children = (
-				04CAFADC1958B8D5008CBA4C /* .keep */,
-				04CAFADD1958B8D5008CBA4C /* _kiss_fft_guts.h */,
-				04CAFADE1958B8D5008CBA4C /* kiss_fft.c */,
-				04CAFADF1958B8D5008CBA4C /* kiss_fft.h */,
-				04CAFAE01958B8D5008CBA4C /* kiss_fftr.c */,
-				04CAFAE11958B8D5008CBA4C /* kiss_fftr.h */,
-			);
-			path = kiss;
-			sourceTree = "<group>";
-		};
-		04CAFAEB1958D4D6008CBA4C /* osx */ = {
-			isa = PBXGroup;
-			children = (
-				04CAFAEC1958D4D6008CBA4C /* fftw3f.a */,
-			);
-			path = osx;
-			sourceTree = "<group>";
-		};
 		04CAFAEE1958DD9B008CBA4C /* ofxBiquadFilter */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,10 +239,10 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				DD348A631B35EEA90008FD52 /* ofxFft */,
+				DD348A3D1B35DB5B0008FD52 /* ofxCocoaGLView */,
 				BFB00C75195D66F200D02A40 /* ofxOsc */,
 				04CAFAEE1958DD9B008CBA4C /* ofxBiquadFilter */,
-				04CAFAC81958B8D5008CBA4C /* ofxFft */,
-				04CAFAC31958B776008CBA4C /* ofxCocoaGLView */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -475,6 +372,101 @@
 				BFB00C9F195D66F200D02A40 /* OscTypes.h */,
 			);
 			path = osc;
+			sourceTree = "<group>";
+		};
+		DD348A3D1B35DB5B0008FD52 /* ofxCocoaGLView */ = {
+			isa = PBXGroup;
+			children = (
+				DD348A3E1B35DB5B0008FD52 /* src */,
+			);
+			name = ofxCocoaGLView;
+			sourceTree = "<group>";
+		};
+		DD348A3E1B35DB5B0008FD52 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				DD348A3F1B35DB5B0008FD52 /* ofxCocoaGLView.h */,
+				DD348A401B35DB5B0008FD52 /* ofxCocoaGLView.mm */,
+			);
+			name = src;
+			path = ../../../addons/ofxCocoaGLView/src;
+			sourceTree = "<group>";
+		};
+		DD348A631B35EEA90008FD52 /* ofxFft */ = {
+			isa = PBXGroup;
+			children = (
+				DD348A641B35EEA90008FD52 /* src */,
+				DD348A6F1B35EEA90008FD52 /* libs */,
+			);
+			name = ofxFft;
+			sourceTree = "<group>";
+		};
+		DD348A641B35EEA90008FD52 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				DD348A651B35EEA90008FD52 /* ofxEasyFft.cpp */,
+				DD348A661B35EEA90008FD52 /* ofxEasyFft.h */,
+				DD348A671B35EEA90008FD52 /* ofxFft.cpp */,
+				DD348A681B35EEA90008FD52 /* ofxFft.h */,
+				DD348A691B35EEA90008FD52 /* ofxFftBasic.cpp */,
+				DD348A6A1B35EEA90008FD52 /* ofxFftBasic.h */,
+				DD348A6B1B35EEA90008FD52 /* ofxFftw.cpp */,
+				DD348A6C1B35EEA90008FD52 /* ofxFftw.h */,
+				DD348A6D1B35EEA90008FD52 /* ofxProcessFFT.cpp */,
+				DD348A6E1B35EEA90008FD52 /* ofxProcessFFT.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxFft/src;
+			sourceTree = "<group>";
+		};
+		DD348A6F1B35EEA90008FD52 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				DD348A701B35EEA90008FD52 /* fftw */,
+				DD348A761B35EEA90008FD52 /* kiss */,
+			);
+			name = libs;
+			path = ../../../addons/ofxFft/libs;
+			sourceTree = "<group>";
+		};
+		DD348A701B35EEA90008FD52 /* fftw */ = {
+			isa = PBXGroup;
+			children = (
+				DD348A711B35EEA90008FD52 /* .keep */,
+				DD348A721B35EEA90008FD52 /* include */,
+				DD348A741B35EEA90008FD52 /* lib */,
+			);
+			path = fftw;
+			sourceTree = "<group>";
+		};
+		DD348A721B35EEA90008FD52 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				DD348A731B35EEA90008FD52 /* fftw3.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		DD348A741B35EEA90008FD52 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				DD348A841B35F3B50008FD52 /* fftw3f.a */,
+				DD348A751B35EEA90008FD52 /* .keep */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		DD348A761B35EEA90008FD52 /* kiss */ = {
+			isa = PBXGroup;
+			children = (
+				DD348A771B35EEA90008FD52 /* .keep */,
+				DD348A781B35EEA90008FD52 /* _kiss_fft_guts.h */,
+				DD348A791B35EEA90008FD52 /* kiss_fft.c */,
+				DD348A7A1B35EEA90008FD52 /* kiss_fft.h */,
+				DD348A7B1B35EEA90008FD52 /* kiss_fftr.c */,
+				DD348A7C1B35EEA90008FD52 /* kiss_fftr.h */,
+			);
+			path = kiss;
 			sourceTree = "<group>";
 		};
 		E4328144138ABC890047C5CB /* Products */ = {
@@ -637,36 +629,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04CAFAE71958B8D5008CBA4C /* kiss_fft.c in Sources */,
 				BFB00CA3195D66F200D02A40 /* ofxOscReceiver.cpp in Sources */,
-				04CAFAE51958B8D5008CBA4C /* ofxFftw.cpp in Sources */,
+				DD348A7F1B35EEA90008FD52 /* ofxFftBasic.cpp in Sources */,
 				BFB00CA7195D66F200D02A40 /* UdpSocket.cpp in Sources */,
 				04CAFAF81958E025008CBA4C /* AudioAnalyzer.cpp in Sources */,
+				DD348A7E1B35EEA90008FD52 /* ofxFft.cpp in Sources */,
 				BFB00CA4195D66F200D02A40 /* ofxOscSender.cpp in Sources */,
-				04CAFAE41958B8D5008CBA4C /* ofxFftBasic.cpp in Sources */,
 				DDFBE3B61961351C00A336C7 /* OutputDestination.mm in Sources */,
-				04CAFAE21958B8D5008CBA4C /* ofxEasyFft.cpp in Sources */,
-				04CAFAE61958B8D5008CBA4C /* ofxProcessFFT.cpp in Sources */,
+				DD348A801B35EEA90008FD52 /* ofxFftw.cpp in Sources */,
 				BF2FDAD11959E4FA00CCCD76 /* AudioAgentProcessor.mm in Sources */,
-				04CAFAE81958B8D5008CBA4C /* kiss_fftr.c in Sources */,
 				BFB00CA8195D66F200D02A40 /* OscOutboundPacketStream.cpp in Sources */,
 				BFE796E9195AF5670047FB98 /* AudioAgent.mm in Sources */,
+				DD348A831B35EEA90008FD52 /* kiss_fftr.c in Sources */,
 				BFB00CA0195D66F200D02A40 /* ofxOscBundle.cpp in Sources */,
 				BF8043D1195C71DF007B6870 /* SliderTextField.m in Sources */,
 				6091337D1652C9C900B523AD /* AppDelegate.m in Sources */,
 				BFB00CA1195D66F200D02A40 /* ofxOscMessage.cpp in Sources */,
 				BFB00CA5195D66F200D02A40 /* IpEndpointName.cpp in Sources */,
 				04CAFAF51958DD9B008CBA4C /* ofxBiquadFilterInstance.cpp in Sources */,
-				04CAFAC71958B776008CBA4C /* ofxCocoaGLView.mm in Sources */,
 				6091337E1652C9C900B523AD /* main.m in Sources */,
+				DD348A811B35EEA90008FD52 /* ofxProcessFFT.cpp in Sources */,
 				BFB00CA2195D66F200D02A40 /* ofxOscParameterSync.cpp in Sources */,
 				04CAFAF41958DD9B008CBA4C /* ofxBiquadFilter.cpp in Sources */,
 				BFB00CA9195D66F200D02A40 /* OscPrintReceivedElements.cpp in Sources */,
 				BFB00CA6195D66F200D02A40 /* NetworkingUtils.cpp in Sources */,
 				BFB00CAA195D66F200D02A40 /* OscReceivedElements.cpp in Sources */,
 				BFB00CAB195D66F200D02A40 /* OscTypes.cpp in Sources */,
-				04CAFAE31958B8D5008CBA4C /* ofxFft.cpp in Sources */,
 				609133871652CB3E00B523AD /* mainView.mm in Sources */,
+				DD348A7D1B35EEA90008FD52 /* ofxEasyFft.cpp in Sources */,
+				DD348A821B35EEA90008FD52 /* kiss_fft.c in Sources */,
+				DD348A411B35DB5B0008FD52 /* ofxCocoaGLView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,6 +733,7 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -815,10 +808,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
-					/Users/drexjojo/Development/of_v0.8.1_osx_release/addons/ofxFft/libs/fftw/lib/osx,
+					/Users/jonas/Development/openframeworks/openFrameworks/addons/ofxFft/libs/fftw/lib,
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SoundalizerDebug;
@@ -831,6 +821,7 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -907,7 +898,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
-					/Users/drexjojo/Development/of_v0.8.1_osx_release/addons/ofxFft/libs/fftw/lib/osx,
+					/Users/jonas/Development/openframeworks/openFrameworks/addons/ofxFft/libs/fftw/lib,
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Soundalizer;

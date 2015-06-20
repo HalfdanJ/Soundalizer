@@ -5,7 +5,7 @@
 class AudioAnalyzer : public ofxEasyFft {
 public:
     
-    void setup(int bufferSize = 2048/2,
+    void setup(int bufferSize = 2048,
                fftWindowType windowType = OF_FFT_WINDOW_HAMMING,
                fftImplementation implementation = OF_FFT_FFTW,
                int audioBufferSize = 2048/2,
@@ -16,6 +16,7 @@ public:
     vector<ofxBiquadFilter1f> filters;
     vector<float>  filtederValues;
     vector<float>  dbValues, values;
+    vector<float>  maxValues;
     
     int sampleRate, bufferSize;
     

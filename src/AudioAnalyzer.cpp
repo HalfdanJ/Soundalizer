@@ -17,6 +17,7 @@ void AudioAnalyzer::setup(int _bufferSize, fftWindowType windowType, fftImplemen
     filtederValues.resize(_bufferSize);
     dbValues.resize(_bufferSize);
     values.resize(_bufferSize);
+    maxValues.resize(_bufferSize);
     
     for(int i=0;i<bufferSize;i++){
         filters[i].setFc(0.20);
@@ -44,6 +45,11 @@ void AudioAnalyzer::audioReceived(float* input, int bufferSize, int nChannels) {
             dbValues[i] = toDb( getBins()[i]);
             values[i] = getBins()[i];
 
+            if(maxValues[i] < values[i]){
+                maxValues[i] = values[i];
+            } else {
+                maxValues[i] *= 0.95;
+            }
         }
     }
     
