@@ -169,7 +169,7 @@
         
        
         //Max values
-        ofSetColor(ofColor().fromHex(0xFF8F00));
+        ofSetColor(ofColor().fromHex(0x555555));
         for(int i=0;i<bufferSize;i++){
             float frequency = analyzer.indexToFreq(i);
             float x = log10(frequency) ;
@@ -178,7 +178,8 @@
             ofLine(x, -100, x, db);
         }
 
-        
+        glLineWidth(2.0);
+  
         //Waves
         ofSetColor(ofColor().fromHex(0xFF3D00));
         float max = 0;
@@ -194,7 +195,7 @@
             
         }
         
-       
+               glLineWidth(1.0);
 
         
         ofPushMatrix();{
