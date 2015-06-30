@@ -20,7 +20,7 @@
 
 -(void)update:(NSArray *)agents{
     for(AudioAgent * agent in agents){
-        if(agent.oscAddress && agent.oscAddress.length > 0){
+        if(agent.oscAddress && agent.oscAddress.length > 0 && agent.enabled == true){
             ofxOscMessage msg;
             msg.setAddress([agent.oscAddress cStringUsingEncoding:NSUTF8StringEncoding]);
             msg.addFloatArg(agent.processor->value());

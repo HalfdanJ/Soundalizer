@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6249" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1090" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6249"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -109,7 +109,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="219" height="638"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RW1-EE-aKF">
+                                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RW1-EE-aKF">
                                         <rect key="frame" x="0.0" y="18" width="108" height="23"/>
                                         <buttonCell key="cell" type="smallSquare" title="Add +" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LKl-co-U2w">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -123,7 +123,7 @@
                                             </binding>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hwp-yK-44g">
+                                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hwp-yK-44g">
                                         <rect key="frame" x="108" y="18" width="107" height="23"/>
                                         <buttonCell key="cell" type="smallSquare" title="Remove -" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sej-C8-3OP">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -150,6 +150,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="56" rowSizeStyle="automatic" viewBased="YES" id="JoR-Q6-WEJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="213" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -184,6 +185,17 @@
                                                                                 <binding destination="DVk-YY-Vpl" name="value" keyPath="objectValue.name" id="8cJ-nR-eva"/>
                                                                             </connections>
                                                                         </textField>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nrp-Kg-NdO">
+                                                                            <rect key="frame" x="1" y="22" width="214" height="17"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="9D3-pk-KIE">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                            <connections>
+                                                                                <binding destination="DVk-YY-Vpl" name="value" keyPath="objectValue.oscAddress" id="VNS-dL-ySx"/>
+                                                                            </connections>
+                                                                        </textField>
                                                                         <levelIndicator verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kz3-sL-d4u">
                                                                             <rect key="frame" x="2" y="3" width="209" height="16"/>
                                                                             <levelIndicatorCell key="cell" alignment="left" maxValue="1" warningValue="1" criticalValue="1" levelIndicatorStyle="continuousCapacity" id="5Rs-vS-z6V"/>
@@ -191,6 +203,16 @@
                                                                                 <binding destination="DVk-YY-Vpl" name="value" keyPath="objectValue.outputValue" id="HCe-mD-mc6"/>
                                                                             </connections>
                                                                         </levelIndicator>
+                                                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QR2-Nz-U0e">
+                                                                            <rect key="frame" x="187" y="37" width="22" height="18"/>
+                                                                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="woI-cY-ZF6">
+                                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                                <font key="font" metaFont="system"/>
+                                                                            </buttonCell>
+                                                                            <connections>
+                                                                                <binding destination="DVk-YY-Vpl" name="value" keyPath="objectValue.enabled" id="QUd-wt-hy1"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="kz3-sL-d4u" firstAttribute="leading" secondItem="DVk-YY-Vpl" secondAttribute="leading" constant="2" id="6Ig-Je-Kp9"/>
@@ -502,7 +524,7 @@
                 <subviews>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzF-ml-bdn">
                         <rect key="frame" x="-1" y="274" width="278" height="146"/>
-                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="4uX-lV-hCx">
+                        <clipView key="contentView" misplaced="YES" id="4uX-lV-hCx">
                             <rect key="frame" x="1" y="17" width="238" height="117"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -510,7 +532,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="276" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
                                         <tableColumn identifier="AutomaticTableColumnIdentifier.0" width="116" minWidth="40" maxWidth="1000" id="lxF-xe-q2H">
@@ -611,7 +633,7 @@
                     </button>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUG-md-etA">
                         <rect key="frame" x="-1" y="54" width="278" height="170"/>
-                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="uzn-tt-SDG">
+                        <clipView key="contentView" misplaced="YES" id="uzn-tt-SDG">
                             <rect key="frame" x="1" y="17" width="238" height="117"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -619,7 +641,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="276" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
                                         <tableColumn identifier="AutomaticTableColumnIdentifier.0" width="116" minWidth="40" maxWidth="1000" id="ELM-Xe-dLf" userLabel="Address">

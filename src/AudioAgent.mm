@@ -9,7 +9,7 @@
 #import "AudioAgent.h"
 
 @implementation AudioAgent
-@synthesize name, oscAddress;
+@synthesize name, oscAddress, enabled;
 @synthesize processor;
 
 
@@ -17,7 +17,7 @@
     self = [super init];
     if(self){
         self.processor = new AudioAgentProcessor();
-
+        self.enabled = true;
         [NSTimer scheduledTimerWithTimeInterval:1.0/15. target:self selector:@selector(updateValue) userInfo:nil repeats:true];
     }
     return self;
@@ -91,6 +91,8 @@
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.name forKey:@"name"];
     [aCoder encodeObject:self.oscAddress forKey:@"oscAddress"];
+    
+    [aCoder encodeBool:self.enabled forKey:@"enabled"];
 
     [aCoder encodeInteger:self.inputFreqMin forKey:@"inputFreqMin"];
     [aCoder encodeInteger:self.inputFreqMax forKey:@"inputFreqMax"];
@@ -107,6 +109,7 @@
     if(self){
         self.name = [aDecoder decodeObjectForKey:@"name"];
         self.oscAddress = [aDecoder decodeObjectForKey:@"oscAddress"];
+        self.enabled = [aDecoder decodeBoolForKey:@"enabled"];
 
         self.inputFreqMin = [aDecoder decodeIntegerForKey:@"inputFreqMin"];
         self.inputFreqMax = [aDecoder decodeIntegerForKey:@"inputFreqMax"];
