@@ -184,6 +184,17 @@
                                                                                 <binding destination="DVk-YY-Vpl" name="value" keyPath="objectValue.name" id="8cJ-nR-eva"/>
                                                                             </connections>
                                                                         </textField>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nrp-Kg-NdO">
+                                                                            <rect key="frame" x="1" y="22" width="214" height="17"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="9D3-pk-KIE">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                            <connections>
+                                                                                <binding destination="DVk-YY-Vpl" name="value" keyPath="objectValue.oscAddress" id="VNS-dL-ySx"/>
+                                                                            </connections>
+                                                                        </textField>
                                                                         <levelIndicator verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kz3-sL-d4u">
                                                                             <rect key="frame" x="2" y="3" width="209" height="16"/>
                                                                             <levelIndicatorCell key="cell" alignment="left" maxValue="1" warningValue="1" criticalValue="1" levelIndicatorStyle="continuousCapacity" id="5Rs-vS-z6V"/>
@@ -191,6 +202,16 @@
                                                                                 <binding destination="DVk-YY-Vpl" name="value" keyPath="objectValue.outputValue" id="HCe-mD-mc6"/>
                                                                             </connections>
                                                                         </levelIndicator>
+                                                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QR2-Nz-U0e">
+                                                                            <rect key="frame" x="187" y="37" width="22" height="18"/>
+                                                                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="woI-cY-ZF6">
+                                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                                <font key="font" metaFont="system"/>
+                                                                            </buttonCell>
+                                                                            <connections>
+                                                                                <binding destination="DVk-YY-Vpl" name="value" keyPath="objectValue.enabled" id="QUd-wt-hy1"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="kz3-sL-d4u" firstAttribute="leading" secondItem="DVk-YY-Vpl" secondAttribute="leading" constant="2" id="6Ig-Je-Kp9"/>
@@ -510,7 +531,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="276" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
                                         <tableColumn identifier="AutomaticTableColumnIdentifier.0" width="116" minWidth="40" maxWidth="1000" id="lxF-xe-q2H">
@@ -619,7 +640,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="276" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
                                         <tableColumn identifier="AutomaticTableColumnIdentifier.0" width="116" minWidth="40" maxWidth="1000" id="ELM-Xe-dLf" userLabel="Address">

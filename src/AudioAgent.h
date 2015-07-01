@@ -9,12 +9,15 @@
     NSString * oscAddress;
     
     float _outputValue;
-
+    bool enabled;
 }
+
 
 @property (retain) NSString * name;
 @property (retain) NSString * oscAddress;
 @property (assign) AudioAgentProcessor * processor;
+
+@property bool enabled;
 
 @property float inputFreqMin;
 @property float inputFreqMax;

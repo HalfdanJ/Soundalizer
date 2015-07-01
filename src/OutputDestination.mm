@@ -21,7 +21,7 @@
 
 -(void)update:(NSArray *)agents addresses:(NSArray*)addresses{
     for(AudioAgent * agent in agents){
-        if(agent.oscAddress && agent.oscAddress.length > 0){
+        if(agent.oscAddress && agent.oscAddress.length > 0 && agent.enabled == true){
             float min = 0;
             float max = 1;
             for(AddressObject * adr in addresses){
