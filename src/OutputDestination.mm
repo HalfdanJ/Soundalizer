@@ -1,5 +1,6 @@
 #import "OutputDestination.h"
 #import "AudioAgent.h"
+#import "AddressObject.h"
 
 @implementation OutputDestination
 @synthesize hostname, port;
@@ -18,12 +19,27 @@
     return self;
 }
 
--(void)update:(NSArray *)agents{
+-(void)update:(NSArray *)agents addresses:(NSArray*)addresses{
     for(AudioAgent * agent in agents){
         if(agent.oscAddress && agent.oscAddress.length > 0){
+            float min = 0;
+            float max = 1;
+            for(AddressObject * adr in addresses){
+                if([adr.address isEqualTo:agent.oscAddress]){
+                    min = adr.mappingMin;
+                    max = adr.mappingMax;
+                    break;
+                }
+            }
+            
+            float val = agent.processor->value();
+            
+            val *= max - min;
+            val += min;
+            
             ofxOscMessage msg;
             msg.setAddress([agent.oscAddress cStringUsingEncoding:NSUTF8StringEncoding]);
-            msg.addFloatArg(agent.processor->value());
+            msg.addFloatArg(val);
             msg.addFloatArg(agent.processor->speedValue());
             osc.sendMessage(msg);
         }

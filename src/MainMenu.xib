@@ -109,7 +109,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="219" height="638"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RW1-EE-aKF">
+                                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RW1-EE-aKF">
                                         <rect key="frame" x="0.0" y="18" width="108" height="23"/>
                                         <buttonCell key="cell" type="smallSquare" title="Add +" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LKl-co-U2w">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -123,7 +123,7 @@
                                             </binding>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hwp-yK-44g">
+                                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hwp-yK-44g">
                                         <rect key="frame" x="108" y="18" width="107" height="23"/>
                                         <buttonCell key="cell" type="smallSquare" title="Remove -" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sej-C8-3OP">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -500,7 +500,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="276" height="419"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzF-ml-bdn">
+                    <scrollView ambiguous="YES" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzF-ml-bdn">
                         <rect key="frame" x="-1" y="274" width="278" height="146"/>
                         <clipView key="contentView" ambiguous="YES" misplaced="YES" id="4uX-lV-hCx">
                             <rect key="frame" x="1" y="17" width="238" height="117"/>
@@ -609,7 +609,7 @@
                             <action selector="remove:" target="66W-ih-DRb" id="d3v-1l-Il9"/>
                         </connections>
                     </button>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUG-md-etA">
+                    <scrollView ambiguous="YES" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUG-md-etA">
                         <rect key="frame" x="-1" y="54" width="278" height="170"/>
                         <clipView key="contentView" ambiguous="YES" misplaced="YES" id="uzn-tt-SDG">
                             <rect key="frame" x="1" y="17" width="238" height="117"/>
@@ -638,20 +638,38 @@
                                                 <binding destination="66W-ih-DRb" name="value" keyPath="arrangedObjects.address" id="czM-Zt-T1e"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn identifier="AutomaticTableColumnIdentifier.1" width="154" minWidth="40" maxWidth="1000" id="fjz-kB-XtK">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Name">
+                                        <tableColumn identifier="AutomaticTableColumnIdentifier.1" width="72.2109375" minWidth="40" maxWidth="1000" id="fjz-kB-XtK">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Min">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="sof-TL-EOj">
+                                                <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="rBF-4p-dfV"/>
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="66W-ih-DRb" name="value" keyPath="arrangedObjects.name" id="ZG3-BG-xAf"/>
+                                                <binding destination="66W-ih-DRb" name="value" keyPath="arrangedObjects.mappingMin" id="WPl-MM-pjZ"/>
+                                            </connections>
+                                        </tableColumn>
+                                        <tableColumn width="79.0546875" minWidth="10" maxWidth="3.4028234663852886e+38" id="gHg-8n-sVB">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Max">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="gxo-tg-9Af">
+                                                <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="COr-YN-67k"/>
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="66W-ih-DRb" name="value" keyPath="arrangedObjects.mappingMax" id="CDe-zS-vOU"/>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
@@ -662,7 +680,7 @@
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="WXK-ho-9k2">
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="WXK-ho-9k2">
                             <rect key="frame" x="1" y="119" width="223" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -676,11 +694,21 @@
                         </tableHeaderView>
                     </scrollView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="wzF-ml-bdn" secondAttribute="trailing" constant="-1" id="AKe-44-H7S"/>
+                    <constraint firstItem="wzF-ml-bdn" firstAttribute="leading" secondItem="Aob-WR-w9P" secondAttribute="leading" constant="-1" id="dcu-Kb-CKN"/>
+                    <constraint firstItem="JUG-md-etA" firstAttribute="leading" secondItem="Aob-WR-w9P" secondAttribute="leading" constant="-1" id="kqg-TK-V6k"/>
+                    <constraint firstAttribute="trailing" secondItem="JUG-md-etA" secondAttribute="trailing" constant="-1" id="p93-4n-x7J"/>
+                </constraints>
             </view>
             <point key="canvasLocation" x="888" y="269.5"/>
         </window>
         <arrayController objectClassName="OutputDestination" id="xBL-CM-AMO" userLabel="Destination Array Controller"/>
-        <arrayController id="66W-ih-DRb" userLabel="Address Array Controller"/>
+        <arrayController objectClassName="AddressObject" id="66W-ih-DRb" userLabel="Address Array Controller">
+            <connections>
+                <binding destination="494" name="contentArray" keyPath="self.mainView.addresses" id="8yE-tT-7D5"/>
+            </connections>
+        </arrayController>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>

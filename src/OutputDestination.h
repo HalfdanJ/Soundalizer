@@ -12,6 +12,6 @@
 @property (retain) NSString * hostname;
 @property int port;
 
--(void) update:(NSArray*)agents;
+-(void) update:(NSArray*)agents addresses:(NSArray*)addresses;
 
 @end

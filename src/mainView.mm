@@ -2,12 +2,13 @@
 #include <stdlib.h>
 
 @implementation mainView
-@synthesize  agentsArrayController, agents, destinationsArrayController, addressesArrayController;
+@synthesize  agentsArrayController, agents, destinationsArrayController, addressesArrayController, addresses;
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     //
     self.agents = [NSMutableArray array];
+    self.addresses = [NSMutableArray array];
     
     analyzer.setup();
     
@@ -55,9 +56,6 @@
         [self.addressesArrayController addObject:adr];
     }}
 
-- (NSArray*) addresses{
-    return self.addressesArrayController.content;
-}
 
 - (void) loadOutputs: (NSArray*)outputs{
     NSRange range = NSMakeRange(0, [[self.destinationsArrayController arrangedObjects] count]);
@@ -91,7 +89,7 @@
 
 - (void) updateOutputs {
     for(OutputDestination * dest in self.destinationsArrayController.content){
-        [dest update:self.agents];
+        [dest update:self.agents addresses:self.addresses];
     }
 }
 
